@@ -2,11 +2,16 @@ import yaml
 class RAM:
     def __init__ (self):
         with open("RAM.yaml","r") as ymlfile:
-            cfg = yaml.load(input, Loader=yaml.FullLoader)
+            cfg = yaml.load(ymlfile)
 
         for section in cfg:
             print(section)
-        print(cfg["visualization"])
+        #print(cfg["visualization"])
+        clock = cfg["clock"]
+        datosVisualizacion = cfg["visualization"]
+        dataRAM = cfg["data"]
+        instructionRAM = cfg["instructions"]
+        print(clock)
         #leo el archivo y guardo en arrays la data y las instrucction. Los bios.yaml
         # self.RData = lo que está en data del archivo.
         pass
