@@ -1,5 +1,5 @@
-import Integratedcircuit
-class ALU(Integratedcircuit):
+#import Integratedcircuit
+class ALU:
     zero = False
     Overflow = False
     Negative = False 

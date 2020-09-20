@@ -1,7 +1,18 @@
 #import Integratedcircuit
 from ROM import ROM
+from ALU import ALU
+from RAM import RAM
+from Register import Register
 if __name__ == "__main__":
     rom = ROM()
+    cpufm = open("1.cpufm", "r")
+    cpufm_Instruc = []
+    for linea in cpufm.readlines():
+        cpufm_Instruc.append(linea)
+    for i in range (len(cpufm_Instruc)):
+        strin = str(cpufm_Instruc[i])
+    
+    ram = RAM()
     R0 = "Regristro 0"
     R1 = "Regristro 1"
     data = 13
