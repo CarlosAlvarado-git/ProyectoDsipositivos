@@ -1,6 +1,7 @@
 class ROM:
     def __init__ (self):
         #leo el archivo y guardo en lo que esta en la tabla de Set Instruccion.
+        #prueba
         pass
     def BuscarInstru(buscar, R0, R1, data):
         #for i in range(len(ROM.int)):
