@@ -16,3 +16,4 @@ class CU(Integratedcircuit):
     # el array de RAM.data obtiene lo del archivo y luego de las operaciones se cambia.
     # primero ROM y luego Alu. 
     # al llamar ver que quiere restar, vero el orden, veo cual es mayor, y ya debende de eso uso Sub o Sub con borrow
+    # a la ROM le mando la instrucions ROM.BuscarInstru(R0, R1, data)
