@@ -1,4 +1,4 @@
-0000-OUTPUT-OUT-print(RAM.data(data))-4
+0000-OUTPUT-OUT-#print(13)!-4
 0001-LOAD_R0-LD_R0-RAM.valorData(data)-4
 0010-LOAD_R1-LD_R1- -
 0011-AND- -

@@ -1,6 +1,12 @@
 #import Integratedcircuit
-import ROM as R
-rom = R()
+if __name__ == "__main__":
+    from ROM import ROM
+    rom = ROM()
+    R0 = "Regristro 0"
+    R1 = "Regristro 1"
+    data = 13
+    instruction = rom.BuscarInstru("0000", R0, R1, data)
+    eval(instruction)
 
 
 #def __init__(self):
