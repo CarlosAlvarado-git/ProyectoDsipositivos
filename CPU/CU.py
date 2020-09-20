@@ -3,22 +3,45 @@ from ROM import ROM
 from ALU import ALU
 from RAM import RAM
 from Register import Register
+global R0
+global R1
+R0 = Register(-1)
+R1 = Register(-1)
 if __name__ == "__main__":
+    global R0
+    global R1
     rom = ROM()
     cpufm = open("1.cpufm", "r")
     cpufm_Instruc = []
     for linea in cpufm.readlines():
         cpufm_Instruc.append(linea)
+    #print(cpufm_Instruc)
     for i in range (len(cpufm_Instruc)):
         strin = str(cpufm_Instruc[i])
+        if(strin.find(";")!= -1):
+            pass
+        else:
+            pincio = 0
+            pfinal = strin.find(" ")
+            buscar = strin[:pfinal]
+            pincio = pfinal
+            pfinal = strin.find(" ", pfinal+1)
+            data = strin[pincio: pfinal]
+            instruction = rom.BuscarInstru(buscar, R0, R1, data)
+            eval(instruction)
+            break
+def CargarRegistroR0(insertar):
+    global R0
+    R0.VRam = insertar
+def CargarRegistroR1(insertar):
+    global R1
+    R1.VRam = insertar
+
+        
     
-    ram = RAM()
-    R0 = "Regristro 0"
-    R1 = "Regristro 1"
-    data = 13
-    buscar = "0000"
-    instruction = rom.BuscarInstru(buscar, R0, R1, data)
-    eval(instruction)
+    #ram = RAM()
+    #instruction = rom.BuscarInstru(buscar, R0, R1, data)
+    #eval(instruction)
 
 
 #def __init__(self):
