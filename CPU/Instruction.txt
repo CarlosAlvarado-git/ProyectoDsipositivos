@@ -1,9 +1,9 @@
-0000-OUTPUT-OUT-#print(RAM.data(data))!-4
-0001-LOAD_R0-LD_R0-#CargarRegistroR0(RAM.valorData(data))!-4
-0010-LOAD_R1-LD_R1-#CargarRegistroR1(RAM.valorData(data))!-4
+0000-OUTPUT-OUT-#print(ram.data(data))!-4
+0001-LOAD_R0-LD_R0-#CargarRegistroR0(ram.valorData(data))!-4
+0010-LOAD_R1-LD_R1-#CargarRegistroR1(ram.valorData(data))!-4
 0011-AND-#!-2
 0100-ILD_R0-#!-4
-0101-STR_R0-STORE_R0-#RAM.InsertarValor(R0.VRam, data)!-4
+0101-STR_R0-STORE_R0-#ram.InsertarValor(R0.VRam, data)!-4
 0110-STR_R1-STORE_R1-#!-4
 0111-OR-#!-2
 1000-ILD_R1-#!-4

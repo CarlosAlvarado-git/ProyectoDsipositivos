@@ -27,7 +27,7 @@ RAM:
       - 0
       - 2
       - 5
-      - 0
+      - 7
       - 0
       - 12 #el agregado
   instructions: []

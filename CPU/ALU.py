@@ -11,9 +11,10 @@ class ALU:
         self.Input = Input
         
     
-    def Add(self, R0, R1):
+    def Add(self, R0, R1): #modificarlo para que sea con referencia y así de una se cambie el valor.
         R1 = R0 + R1
         self.Simbols(R1,15,">")
+
         if (self.Mayor == True):
             self.Overflow = True
             if (R1 % 2 == 0):

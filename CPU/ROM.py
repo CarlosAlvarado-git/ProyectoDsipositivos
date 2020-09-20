@@ -7,12 +7,16 @@ class ROM:
         #leo el archivo y guardo en lo que esta en la tabla de Set Instruccion.
         #prueba
     def BuscarInstru(self, buscar, R0, R1, data):
+        instruc = ""
         for i in range(len(self.Rom_array)):
             strin = str(self.Rom_array[i])
+            #print(buscar)
             if(strin.find(buscar) != -1):
                 pinicial = int(1 + int(strin.find("#")))
                 pfinal = strin.find("!")
                 instruc =  strin[pinicial: pfinal]
-                return instruc
+                break
             else:
-                return "print('No existe instrucción')"
+                instruc = "print('No existe instrucción')"
+        
+        return instruc

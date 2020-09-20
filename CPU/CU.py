@@ -5,34 +5,40 @@ from RAM import RAM
 from Register import Register
 R0 = Register(-1)
 R1 = Register(-1)
+def CargarRegistroR0(insertar):
+    global R0
+    R0.VRam = insertar
+    #print(R0.VRam)
+def CargarRegistroR1(insertar):
+    global R1
+    R1.VRam = insertar
+    #print(R1.VRam)
 if __name__ == "__main__":
     rom = ROM()
+    ram = RAM()
     cpufm = open("1.cpufm", "r")
     cpufm_Instruc = []
     for linea in cpufm.readlines():
         cpufm_Instruc.append(linea)
-    ram = RAM()
-    #print(cpufm_Instruc)
-    #for i in range (len(cpufm_Instruc)):
-     #   strin = str(cpufm_Instruc[i])
-      #  if(strin.find(";")!= -1):
-       #     pass
-        #else:
-         #   pincio = 0
-          #  pfinal = strin.find(" ")
-           # buscar = strin[:pfinal]
-            #pincio = pfinal
-           # pfinal = strin.find(" ", pfinal+1)
-           # data = strin[pincio: pfinal]
-           # instruction = rom.BuscarInstru(buscar, R0, R1, data)
-           # eval(instruction)
-           # break
-def CargarRegistroR0(insertar):
-    global R0
-    R0.VRam = insertar
-def CargarRegistroR1(insertar):
-    global R1
-    R1.VRam = insertar
+    #ram = RAM()
+    print(cpufm_Instruc)
+    for i in range (len(cpufm_Instruc)):
+        strin = str(cpufm_Instruc[i])
+        if(strin.find(";")!= -1):
+            pass
+        else:
+           pincio = 0
+           pfinal = strin.find(" ")
+           buscar = strin[:pfinal]
+           pincio = pfinal
+           pfinal = strin.find(" ", pfinal+1)
+           data = strin[pincio+1: pfinal]
+           #print(buscar)
+           #print(data)
+           instruction = rom.BuscarInstru(buscar, R0, R1, data)
+           #print(instruction)
+           eval(instruction)
+           break
 
         
     
