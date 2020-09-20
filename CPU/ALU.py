@@ -3,11 +3,12 @@ class ALU(Integratedcircuit):
     zero = False
     Overflow = False
     Negative = False 
-    Swit
+    
     def __init__ (self, Opcode,Input):
         self.Opcode = Opcode
         self.Input = Input
         pass
+    
     def Add(self, R0, R1):
         # var = R0 + R1 (Si me da más de 15, veo si es par o impar y lo trunco)
         # R0 = var (si es par, 14.)
