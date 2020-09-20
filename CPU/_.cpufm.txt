@@ -1,0 +1,28 @@
+;Esto es comentario
+LOAD_R0 1110
+---
+;otro comentario
+0001 14 = agarro el 3
+0010 15 = agarro el 14
+ADD R1 R0 Sumo y resultado R1 = 14, R0 = (17) 15
+1001 R0 R1 Sumo, R0 = 15, R1 = 15
+Jump 3
+ILD_R0 0100(4) 
+R0 = 4
+Str_R0 1011 tonz pongo el resultado en la 13- 4
+Store_R1 1001 pongo el resultado en el 11- 15
+pero en la 14 sigue teniendo 3
+
+HALT, o 1111, o HLT esto termina el programa. 
+esto de abajo ya no debería de realizarse. 
+;otro comentario
+0001 14 = agarro el 3
+0010 15 = agarro el 14
+ADD R1 R0 Sumo y resultado R1 = 14, R0 = (17) 15
+1001 R0 R1 Sumo, R0 = 15, R1 = 15
+Jump 3
+ILD_R0 0100(4) 
+R0 = 4
+Str_R0 1011 tonz pongo el resultado en la 13- 4
+Store_R1 1001 pongo el resultado en el 11- 15
+pero en la 14 sigue teniendo 3 
