@@ -9,9 +9,10 @@ class ROM:
     def BuscarInstru(self, buscar, R0, R1, data):
         for i in range(len(self.Rom_array)):
             strin = str(self.Rom_array[i])
-           
             if(strin.find(buscar) != -1):
                 pinicial = int(1 + int(strin.find("#")))
                 pfinal = strin.find("!")
                 instruc =  strin[pinicial: pfinal]
                 return instruc
+            else:
+                return "print('No existe instrucción')"

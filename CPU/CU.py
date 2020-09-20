@@ -5,7 +5,8 @@ if __name__ == "__main__":
     R0 = "Regristro 0"
     R1 = "Regristro 1"
     data = 13
-    instruction = rom.BuscarInstru("0000", R0, R1, data)
+    buscar = "0000"
+    instruction = rom.BuscarInstru(buscar, R0, R1, data)
     eval(instruction)
 
 
