@@ -9,8 +9,14 @@ class RAM:
         print(cfg["visualization"])
         clock = cfg["clock"]
         visualizacion = cfg["visualization"]
-        data = cfg["data"]
-        instructions = cfg["instructions"]
+        ram_ = cfg["RAM"]
+        data = ram_.get("data")
+        instruction = ram_.get("instructions")
+        print(ram_)
+        print(data)
+
+        #data = cfg["data"]
+        #instructions = cfg["instructions"]
         #leo el archivo y guardo en arrays la data y las instrucction. Los bios.yaml
         # self.RData = lo que está en data del archivo.
         pass
