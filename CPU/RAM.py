@@ -2,7 +2,7 @@ import yaml
 class RAM:
     def __init__ (self):
         with open("RAM.yaml","r") as ymlfile:
-            cfg = yaml.load(ymlfile)
+            cfg = yaml.load(input, Loader=yaml.FullLoader)
 
         for section in cfg:
             print(section)
