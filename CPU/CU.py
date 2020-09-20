@@ -1,7 +1,10 @@
-import Integratedcircuit
-class CU(Integratedcircuit):
-    def __init__(self):
-        pass
+#import Integratedcircuit
+import ROM as R
+rom = R()
+
+
+#def __init__(self):
+     #   pass
     #is the main controller for everything, it
     #is where everything is orchestrated. It should be the one
     #responsible for Fetch, Decode , Execute (send instruction decoded
