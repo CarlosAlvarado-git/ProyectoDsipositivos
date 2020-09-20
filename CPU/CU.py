@@ -1,6 +1,6 @@
 #import Integratedcircuit
+from ROM import ROM
 if __name__ == "__main__":
-    from ROM import ROM
     rom = ROM()
     R0 = "Regristro 0"
     R1 = "Regristro 1"
