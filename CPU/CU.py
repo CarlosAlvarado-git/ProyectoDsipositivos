@@ -36,7 +36,7 @@ if __name__ == "__main__":
            data = strin[pincio+1: pfinal]
            #print(buscar)
            #print(data)
-           instruction = rom.BuscarInstru(buscar, R0, R1, data)
+           instruction = ram.BuscarInstru(buscar, R0, R1, data)
            #print(instruction)
            eval(instruction)
            break
