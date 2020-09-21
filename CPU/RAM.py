@@ -23,10 +23,6 @@ class RAM:
         # self.RData = lo que está en data del archivo.
         pass
     #hola = RAM()
-    def cargarInstruction(self):
-        #Método usado para cargar las instrucciones en la RAM
-        self.instruction = ROM.Rom_array
-    
     def valorData(self, valor):
         #Método usado para extraer un valor de la dada
         valor = int(valor)
@@ -37,17 +33,3 @@ class RAM:
         self.data[valor] = data
     # una funcion que retorne el valor de data: valorData(data)
     # Store_R0: En el array RData
-    def BuscarInstru(self, buscar, R0, R1, data):
-        instruc = ""
-        for i in range(len(self.instruction)):
-            strin = str(self.instruction[i])
-            #print(buscar)
-            if(strin.find(buscar) != -1):
-                pinicial = int(1 + int(strin.find("#")))
-                pfinal = strin.find("!")
-                instruc =  strin[pinicial: pfinal]
-                break
-            else:
-                instruc = "print('No existe instrucción')"
-        
-        return instruc 

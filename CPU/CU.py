@@ -17,14 +17,12 @@ if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     cpufm = open("1.cpufm", "r")
-    cpufm_Instruc = []
     for linea in cpufm.readlines():
-        cpufm_Instruc.append(linea)
+        RAM.instruction.append(linea)
     #ram = RAM()
-    RAM.cargarInstruccion()
-    print(cpufm_Instruc)
-    for i in range (len(cpufm_Instruc)):
-        strin = str(cpufm_Instruc[i])
+    print(RAM.instruction)
+    for i in range (len(RAM.instruction)):
+        strin = str(RAM.instruction[i])
         if(strin.find(";")!= -1):
             pass
         else:
@@ -36,7 +34,7 @@ if __name__ == "__main__":
            data = strin[pincio+1: pfinal]
            #print(buscar)
            #print(data)
-           instruction = ram.BuscarInstru(buscar, R0, R1, data)
+           instruction = rom.BuscarInstru(buscar, R0, R1, data)
            #print(instruction)
            eval(instruction)
            break
