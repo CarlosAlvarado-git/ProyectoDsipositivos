@@ -1,3 +1,4 @@
+import yaml
 class ROM:
     def __init__ (self):
         self.ROM = open("Instruction.txt", "r")
@@ -6,6 +7,34 @@ class ROM:
             self.Rom_array.append(linea)
         #leo el archivo y guardo en lo que esta en la tabla de Set Instruccion.
         #prueba
+        with open("Bios.yaml","r") as ymlfile:
+            cfg = yaml.load(ymlfile)
+            self.cfg = yaml.load(ymlfile)
+
+        for section in cfg:
+            print(section)
+        print(cfg["visualization"])
+        clock = cfg["clock"]
+        visualizacion = cfg["visualization"]
+        ram_ = cfg["RAM"]
+        data = ram_.get("data")
+        instruction = ram_.get("instructions")
+        print(ram_)
+        print(data)
+        #for section in self.cfg:
+         #   print(section)
+        #print(self.cfg["visualization"])
+        self.clock = self.cfg["clock"]
+        self.visualizacion = self.cfg["visualization"]
+        self.ram_ = self.cfg["RAM"]
+        self.data = self.ram_.get("data")
+        self.instruction = self.ram_.get("instructions")
+        #print(ram_)
+        #print(data)
+
+        #data = cfg["data"]
+        #instructions = cfg["instructions"]
+
     def BuscarInstru(self, buscar, R0, R1, data):
         instruc = ""
         for i in range(len(self.Rom_array)):
