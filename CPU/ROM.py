@@ -1,39 +1,38 @@
 import yaml
 class ROM:
     def __init__ (self):
+
+        #Aqui se carga el instruction set table------------------------------------------
         self.ROM = open("Instruction.txt", "r")
         self.Rom_array = []
         for linea in self.ROM.readlines():
             self.Rom_array.append(linea)
         #leo el archivo y guardo en lo que esta en la tabla de Set Instruccion.
         #prueba
+        #Aqui se termina el instruction set table-----------------------------------------
+
+
+        #Aqui se carga el Bios yml---------------------------------------------------
         with open("Bios.yaml","r") as ymlfile:
             cfg = yaml.load(ymlfile)
             self.cfg = yaml.load(ymlfile)
 
-        for section in cfg:
-            print(section)
-        print(cfg["visualization"])
-        clock = cfg["clock"]
-        visualizacion = cfg["visualization"]
-        ram_ = cfg["RAM"]
-        data = ram_.get("data")
-        instruction = ram_.get("instructions")
-        print(ram_)
-        print(data)
-        #for section in self.cfg:
-         #   print(section)
-        #print(self.cfg["visualization"])
-        self.clock = self.cfg["clock"]
-        self.visualizacion = self.cfg["visualization"]
-        self.ram_ = self.cfg["RAM"]
-        self.data = self.ram_.get("data")
-        self.instruction = self.ram_.get("instructions")
-        #print(ram_)
-        #print(data)
+        for section in cfg:           
+            self.clock = self.cfg["clock"]
+            self.visualizacion = self.cfg["visualization"]
+            self.ram_ = self.cfg["RAM"]
+            self.data = self.ram_.get("data")
+            self.instruction = self.ram_.get("instructions")
+        #Aqui se termina de cargar el BIOS yml-----------------------------------------------  
+    
+    def getclock(self):
+        pass
 
-        #data = cfg["data"]
-        #instructions = cfg["instructions"]
+    def getvisualizacion(self):
+        pass
+
+    def getram(self):
+        pass
 
     def BuscarInstru(self, buscar, R0, R1, data):
         instruc = ""
