@@ -17,17 +17,7 @@ class ROM:
             cfg = yaml.load(ymlfile)
             self.cfg = yaml.load(ymlfile)
 
-        for section in cfg:
-            print(section)
-            print(cfg["visualization"])
-            clock = cfg["clock"]
-            visualizacion = cfg["visualization"]
-            ram_ = cfg["RAM"]
-            data = ram_.get("data")
-            instruction = ram_.get("instructions")
-            print(ram_)
-            print(data)
-            
+        for section in cfg:           
             self.clock = self.cfg["clock"]
             self.visualizacion = self.cfg["visualization"]
             self.ram_ = self.cfg["RAM"]
