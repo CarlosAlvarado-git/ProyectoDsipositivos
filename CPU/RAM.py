@@ -1,22 +1,14 @@
-import yaml 
 import ROM
-data = [] 
 class RAM:
     def __init__ (self):
-        with open("BIOS.yaml","r") as ymlfile:
-            self.cfg = yaml.load(ymlfile)
-
+        self.data = ROM.data
         #for section in self.cfg:
          #   print(section)
         #print(self.cfg["visualization"])
         #self.clock = self.cfg["clock"]
         #self.visualizacion = self.cfg["visualization"]
-        self.ram_ = self.cfg["RAM"]
-        self.data = self.ram_.get("data")
-        self.instruction = self.ram_.get("instructions")
         #print(ram_)
         #print(data)
-
         #data = cfg["data"]
         #instructions = cfg["instructions"]
         #leo el archivo y guardo en arrays la data y las instrucction. Los bios.yaml
