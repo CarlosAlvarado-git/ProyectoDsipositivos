@@ -18,11 +18,11 @@ if __name__ == "__main__":
     ram = RAM()
     cpufm = open("1.cpufm", "r")
     for linea in cpufm.readlines():
-        RAM.instruction.append(linea)
+        ram.instruction.append(linea)
     #ram = RAM()
-    print(RAM.instruction)
-    for i in range (len(RAM.instruction)):
-        strin = str(RAM.instruction[i])
+    print(ram.instruction)
+    for i in range (len(ram.instruction)):
+        strin = str(ram.instruction[i])
         if(strin.find(";")!= -1):
             pass
         else:
