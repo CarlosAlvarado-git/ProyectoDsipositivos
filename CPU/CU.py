@@ -1,8 +1,8 @@
 #import Integratedcircuit
-from ROM import ROM
 from ALU import ALU
 from RAM import RAM
 from Register import Register
+from ROM import ROM
 R0 = Register(0)
 R1 = Register(0)
 R2 = Register(0)
