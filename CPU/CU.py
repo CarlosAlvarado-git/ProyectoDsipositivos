@@ -3,8 +3,10 @@ from ROM import ROM
 from ALU import ALU
 from RAM import RAM
 from Register import Register
-R0 = Register(-1)
-R1 = Register(-1)
+R0 = Register(0)
+R1 = Register(0)
+R2 = Register(0)
+R3 = Register(0)
 def CargarRegistroR0(insertar):
     global R0
     R0.VRam = insertar
@@ -13,6 +15,12 @@ def CargarRegistroR1(insertar):
     global R1
     R1.VRam = insertar
     #print(R1.VRam)
+def CargarRegistroR2(insertar):
+    global R2
+    R2.VRam = insertar
+def CargarRegistroR3(insertar):
+    global R3
+    R3.VRam = insertar
 if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
