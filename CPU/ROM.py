@@ -15,10 +15,9 @@ class ROM:
 
         #Aqui se carga el Bios yml---------------------------------------------------
         with open(path + "\\CPU\\Bios.yaml","r") as ymlfile:
-            cfg = yaml.load(ymlfile)
             self.cfg = yaml.load(ymlfile)
 
-        for section in cfg:           
+        for section in self.cfg:           
             self.clock = self.cfg["clock"]
             self.visualizacion = self.cfg["visualization"]
             self.ram_ = self.cfg["RAM"]

@@ -3,6 +3,7 @@ from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
+import os
 R0 = Register(0)
 R1 = Register(0)
 R2 = Register(0)
@@ -24,7 +25,8 @@ def CargarRegistroR3(insertar):
 if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
-    cpufm = open("1.cpufm", "r")
+    path = os.getcwd()
+    cpufm = open(path + "\\CPU\\1.cpufm", "r")
     for linea in cpufm.readlines():
         ram.instruction.append(linea)
     #ram = RAM()
