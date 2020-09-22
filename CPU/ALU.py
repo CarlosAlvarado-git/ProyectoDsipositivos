@@ -34,11 +34,11 @@ class ALU:
         
     def Subtraction(self, R0, R1): 
         R1 = R0- R1
-        self.simbols(R1,0,"==")
+        self.Simbols(R1,0,"==")
         if(self.Igual == True):
             self.zero = True
-        self.simbols(R1,0,"<")
-        if(self.menor == True):
+        self.Simbols(R1,0,"<")
+        if(self.Menor == True):
             self.Negative = True
         # llamo a esta si R0 es más grande que R1, sino llamo a Borrow
         # si la resta es 0, la variables Zero la vuelvo True
