@@ -1,7 +1,8 @@
-import ROM
+from ROM import ROM
 class RAM:
     def __init__ (self):
-        self.data = ROM.data
+        R = ROM()
+        self.data = R.getdata()
         #for section in self.cfg:
          #   print(section)
         #print(self.cfg["visualization"])
