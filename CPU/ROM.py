@@ -34,6 +34,9 @@ class ROM:
     def getram(self):
         pass
 
+    def getdata(self):
+        return self.data
+
     def BuscarInstru(self, buscar, R0, R1, data):
         instruc = ""
         for i in range(len(self.Rom_array)):
