@@ -47,6 +47,17 @@ if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     alu = ALU()
+
+    #for key,valor in rom.getvisualizacion().items():
+        #if(key == "RAM"):
+            #vistaRam = valor
+        #elif(key == "Registers"):
+            #vistaRegistros = valor
+        #elif(key == "Clock"):
+            #vistaClock = valor
+        #elif(key == "ALU"):
+            #vistaAlu = valor
+
     #print(ram.instruction)
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
