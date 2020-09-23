@@ -8,20 +8,21 @@ R0 = Register(0)
 R1 = Register(0)
 R2 = Register(0)
 R3 = Register(0)
+Registros = [R0, R1, R2, R3]
 def CargarRegistroR0(insertar):
-    global R0
-    R0.VRam = insertar
+    global Registros
+    Registros[0].VRam = insertar
     #print(R0.VRam)
 def CargarRegistroR1(insertar):
-    global R1
-    R1.VRam = insertar
+    global Registros
+    Registros[1].VRam = insertar
     #print(R1.VRam)
 def CargarRegistroR2(insertar):
-    global R2
-    R2.VRam = insertar
+    global Registros
+    Registros[2].VRam = insertar
 def CargarRegistroR3(insertar):
-    global R3
-    R3.VRam = insertar
+    global Registros
+    Registros[3].VRam = insertar
 
 def mostrarClock(clock, boolclock):
     if(clock == True):
