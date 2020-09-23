@@ -30,7 +30,7 @@ def mostrarRam(ramdata, boolram):
 def mostrarRegistros(boolregistros):
     if(boolregistros == True):
         global R0, R1, R2, R3
-        print(f"Registro0 = {R0.VRam} ")
+        print(f"Registros:\nRegistro0 = {R0.VRam}\nRegistro1 = {R1.VRam}\nRegistro2 = {R2.VRam}\")
 
 
 if __name__ == "__main__":
