@@ -33,7 +33,7 @@ class ALU:
         # si la suma da más de 15, si el número es par, lo truncamos a 14 y si es impar lo truncamos a 15
         
     def Subtraction(self, R0, R1): 
-        R1 = R0 - R1
+        R1.VRam = R0.VRam - R1.VRam
         self.Simbols(R1,0,"==")
         if(self.Igual == True):
             self.zero = True
