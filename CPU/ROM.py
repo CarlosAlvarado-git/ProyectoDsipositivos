@@ -26,14 +26,11 @@ class ROM:
         #Aqui se termina de cargar el BIOS yml-----------------------------------------------  
     
     def getclock(self):
-        pass
+        return self.clock
 
     def getvisualizacion(self):
-        pass
-
-    def getram(self):
-        pass
-
+        return self.visualizacion
+        
     def getdata(self):
         return self.data
 
