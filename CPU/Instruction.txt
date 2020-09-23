@@ -13,4 +13,4 @@
 1100-JMP_N-JUMP_NEG-#!-4
 1101-LOAD_R2-#CargarRegistroR2(ram.valorData(data))!-
 1110-LOAD_R3-#CargarRegistroR3(ram.valorData(data))!-
-1111-HALT-HLT-#!-
+1111-HALT-HLT-#cambioi(i, len(ram.instruction))!-

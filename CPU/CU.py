@@ -40,14 +40,14 @@ def mostrarRegistros(boolregistros):
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
         print(f"Zero: {AluZero}\nOverflow: {AluOverflow}\nNegative: {AluNegative}")
-
-
+def cambioi(i, tamano):
+    i = tamano
 
 if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     alu = ALU()
-
+    instruction = ""
     #for key,valor in rom.getvisualizacion().items():
         #if(key == "RAM"):
             #vistaRam = valor
@@ -64,24 +64,32 @@ if __name__ == "__main__":
         if(strin.find(";")!= -1):
             pass
         else:
-           pincio = 0
-           pfinal = strin.find(" ")
-           buscar = strin[:pfinal]
-           pincio = pfinal
-           pfinal = strin.find(" ", pfinal+1)
-           data = strin[pincio+1: pfinal]
-           #Fetch----------------------------------
-           #print(buscar)
-           #print(data)
-           instruction = rom.BuscarInstru(buscar)
-           #Decode---------------------------------
-           #print(instruction)
-           print("Antes de eval\n")
-           eval(instruction)
-           mostrarRegistros(True)
-           #Execute--------------------------------
-           print("\n")
-
+            data = ""
+            buscar = ""
+            pincio = 0
+            pfinal = strin.find(" ")
+            buscar = strin[:pfinal]
+            pincio = pfinal
+            if(pincio == -1):
+                pass
+            else:
+                data = strin[pincio+1: ]
+                data = data.replace(" ", "")
+            #Fetch----------------------------------
+            #print(buscar)
+            #print(data)
+            instruction = rom.BuscarInstru(buscar)
+            #Decode---------------------------------
+            #print(instruction)
+            print("Antes de eval\n")
+            data = data.rstrip("\n")
+            #print(f"{data}, el len es: {len(data)}")
+            print(f"{buscar}, el len es: {len(buscar)}")
+            eval(instruction)
+            #mostrarRegistros(True)
+            #Execute--------------------------------
+            #print("\n")
+    #print(f"Estoy afuera del for y lo ultimo es: {instruction}")
         
     
     #ram = RAM()

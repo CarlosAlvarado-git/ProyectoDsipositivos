@@ -17,35 +17,39 @@ class ALU:
         x = 0
         if(bit1 == "00" or bit1 == "R0"):
             x = 0
-            return int(x)
+            return x
         elif(bit1 == "01" or bit1 == "R1"):
             x = 1
-            return int(x)
+            return x
         elif(bit1 == "10" or bit1 == "R2"):
             x = 2
-            return int(x)
+            return x
         elif(bit1 == "11" or bit1 == "R3"):
             x = 3
-            return int(x)
+            return x
     def EncontrarReg2(self, data):
-        bit2 = data[2:4]
-        y = 0
-        if(bit2 == "00" or bit2 == "R0"):
-            y = 0
-            return int(y)
-        elif(bit2 == "01" or bit2 == "R1"):
-            y = 1
-            return int(y)
-        elif(bit2 == "10" or bit2 == "R2"):
-            y = 2
-            return int(y)
-        elif(bit2 == "11" or bit2 == "R3"):
-            y = 3
-            return int(y)
+        bit1 = data[2:4]
+        print(f"Esto es bit1 en la segunda funcion: {bit1} y esto es data: {data}")
+        x = 0
+        if(bit1 == "00" or bit1 == "R0"):
+            x = 0
+            return x
+        elif(bit1 == "01" or bit1 == "R1"):
+            x = 1
+            return x
+        elif(bit1 == "10" or bit1 == "R2"):
+            x = 2
+            return x
+        elif(bit1 == "11" or bit1 == "R3"):
+            x = 3
+            return x
     def Add(self, data, Registros): #modificarlo para que sea con referencia y así de una se cambie el valor.
-        data = data.replace(" ", "")
+        #data = data.replace(" ", "")
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
+        print(type(Registros))
+        print(type(x))
+        print(type(y))
         Registros[y].VRam = Registros[x].VRam + Registros[y].VRam
         self.Simbols(Registros[y].VRam,15,">")
         if (self.Mayor == True):

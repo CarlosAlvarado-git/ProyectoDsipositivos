@@ -34,7 +34,7 @@ class RAM:
             valor = int(str(valor), 2)
         return self.data[valor]
 
-    def insertarValor(self,valor, data):
+    def InsertarValor(self,valor, data):
         #Método usado para escribir un valor en la data
         self.data[valor] = data
     # una funcion que retorne el valor de data: valorData(data)
