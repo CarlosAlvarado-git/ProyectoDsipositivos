@@ -12,19 +12,27 @@ class ALU:
         
     #Add(self, data, Register R0, R1, R2, R3)
     #la data de divede y se ve que registro es. "00 0 R0" = R0, 01 = R1, 10 = R2, 11 = R3
-    def Add(self, x, y): #modificarlo para que sea con referencia y así de una se cambie el valor.
-        y.VRam = x.VRam + y.VRam
-        self.Simbols(y,15,">")
+    def Add(self, data, Registros): #modificarlo para que sea con referencia y así de una se cambie el valor.
+        bit1 = data[0:2]
+        bit2 = data[2:4]
+        if(bit1 == "00" or bit1 == "R0"):
+           x = 0
+        elif(bit1 == "01" or bit1 == "R1"):
+            x = 1
+        elif(bit1 == "01" or bit1 == "R1"):
+            pass
+        Registros[y].VRam = Registros[x].VRam + Registros[y].VRam
+        self.Simbols(Registros[y].VRam,15,">")
         if (self.Mayor == True):
             self.Overflow = True
-            if (y % 2 == 0):
-                y = 14
+            if (Registros[y].VRam % 2 == 0):
+                Registros[y].VRam = 14
             else:
-                y = 15
-        self.Simbols(y,0,"<")
+                Registros[y].VRam = 15
+        self.Simbols(Registros[y].VRam,0,"<")
         if (self.Menor == True):
             self.Negative == True
-        self.Simbols(y,0,"==")
+        self.Simbols(Registros[y].VRam,0,"==")
         if(self.Igual == True):
             self.zero = True
         # var = R0 + R1 (Si me da más de 15, veo si es par o impar y lo trunco)
@@ -33,18 +41,18 @@ class ALU:
         # si la suma da más de 15, si el número es par, lo truncamos a 14 y si es impar lo truncamos a 15 
     def Subtraction(self, x, y): 
         y.VRam = x.VRam - y.VRam
-        self.Simbols(R1,0,"==")
+        self.Simbols(y,0,"==")
         if(self.Igual == True):
             self.zero = True
-        self.Simbols(R1,0,"<")
+        self.Simbols(y,0,"<")
         if(self.Menor == True):
-            self.Substract_with_borrow()
+            self.Substract_with_borrow(y)
         # llamo a esta si R0 es más grande que R1, sino llamo a Borrow
         # si la resta es 0, la variables Zero la vuelvo True
         
-    def Subtract_with_borrow(self,x):#llamar al ser la resta negativa.
+    def Subtract_with_borrow(self,y):#llamar al ser la resta negativa.
         self.Negative = True
-        x.VRam = (x.VRam)*(-1)
+        y.VRam = (y.VRam)*(-1)
         
     def Ocomplement(self):
         pass
