@@ -43,6 +43,7 @@ class ALU:
             y = 3
             return int(y)
     def Add(self, data, Registros): #modificarlo para que sea con referencia y así de una se cambie el valor.
+        data = data.replace(" ", "")
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
         Registros[y].VRam = Registros[x].VRam + Registros[y].VRam
@@ -64,6 +65,7 @@ class ALU:
         # overflow lo vuelvo  true. lo imprimo. luego otra vez false. eso con todo. 
         # si la suma da más de 15, si el número es par, lo truncamos a 14 y si es impar lo truncamos a 15 
     def Subtraction(self, data, Registros): 
+        data = data.replace(" ", "")
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
         Registros[y].VRam = Registros[x].VRam - Registros[y].VRam
