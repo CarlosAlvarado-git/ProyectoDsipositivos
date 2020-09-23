@@ -1,8 +1,8 @@
 #import Integratedcircuit
-from CPU.ALU import ALU
-from CPU.RAM import RAM
-from CPU.Register import Register
-from CPU.ROM import ROM
+from ALU import ALU
+from RAM import RAM
+from Register import Register
+from ROM import ROM
 import os
 R0 = Register(0)
 R1 = Register(0)
@@ -34,8 +34,8 @@ def mostrarRam(ramdata, boolram):
 
 def mostrarRegistros(boolregistros):
     if(boolregistros == True):
-        global R0, R1, R2, R3
-        print(f"Registros:\nRegistro0: {R0.VRam}\nRegistro1: {R1.VRam}\nRegistro2: {R2.VRam}\Registro3: {R3.VRam}")
+        global Registros
+        print(f"Registros:\nRegistro0: {Registros[0].VRam}\nRegistro1: {Registros[1].VRam}\nRegistro2: {Registros[2].VRam}\Registro3: {Registros[3].VRam}")
 
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
@@ -47,9 +47,6 @@ if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     alu = ALU()
-
-    
-    #ram = RAM()
     #print(ram.instruction)
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
@@ -66,8 +63,10 @@ if __name__ == "__main__":
            #print(data)
            instruction = rom.BuscarInstru(buscar)
            #print(instruction)
+           print("Antes de eval\n")
            eval(instruction)
-           break
+           mostrarRegistros(True)
+           print("\n")
 
         
     

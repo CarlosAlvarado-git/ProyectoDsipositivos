@@ -1,4 +1,4 @@
-from CPU.ROM import ROM
+from ROM import ROM
 import os
 class RAM:
     def __init__ (self):
