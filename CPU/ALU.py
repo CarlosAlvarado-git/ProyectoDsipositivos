@@ -31,8 +31,8 @@ class ALU:
         # R0 = var (si es par, 14.)
         # overflow lo vuelvo  true. lo imprimo. luego otra vez false. eso con todo. 
         # si la suma da más de 15, si el número es par, lo truncamos a 14 y si es impar lo truncamos a 15 
-    def Subtraction(self, R0, R1): 
-        R1.VRam = R0.VRam - R1.VRam
+    def Subtraction(self, x, y): 
+        y.VRam = x.VRam - y.VRam
         self.Simbols(R1,0,"==")
         if(self.Igual == True):
             self.zero = True
@@ -42,8 +42,9 @@ class ALU:
         # llamo a esta si R0 es más grande que R1, sino llamo a Borrow
         # si la resta es 0, la variables Zero la vuelvo True
         
-    def Subtract_with_borrow(self):#llamar al ser la resta negativa.
+    def Subtract_with_borrow(self,x):#llamar al ser la resta negativa.
         self.Negative = True
+        x.VRam = (x.VRam)*(-1)
         
     def Ocomplement(self):
         pass
