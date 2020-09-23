@@ -22,6 +22,10 @@ class RAM:
         # self.RData = lo que está en data del archivo.
         pass
     #hola = RAM()
+
+    def getRam(self):
+        return self.data
+    
     def valorData(self, valor):#Método usado para extraer un valor de la dada
         if(len(valor) <= 2):
             valor = int(valor)

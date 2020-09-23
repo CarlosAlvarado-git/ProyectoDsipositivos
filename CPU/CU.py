@@ -22,10 +22,23 @@ def CargarRegistroR2(insertar):
 def CargarRegistroR3(insertar):
     global R3
     R3.VRam = insertar
+
+def mostrarRam(ramdata, boolram):
+    if(boolram == True):
+        print(ramdata)
+
+def mostrarRegistros(boolregistros):
+    if(boolregistros == True):
+        global R0, R1, R2, R3
+        print(f"Registro0 = {R0.VRam} ")
+
+
 if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     alu = ALU()
+
+    
     #ram = RAM()
     #print(ram.instruction)
     for i in range (len(ram.instruction)):
