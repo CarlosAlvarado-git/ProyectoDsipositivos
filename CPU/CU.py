@@ -1,8 +1,8 @@
 #import Integratedcircuit
-from ALU import ALU
-from RAM import RAM
-from Register import Register
-from ROM import ROM
+from CPU.ALU import ALU
+from CPU.RAM import RAM
+from CPU.Register import Register
+from CPU.ROM import ROM
 import os
 R0 = Register(0)
 R1 = Register(0)
@@ -23,14 +23,10 @@ def CargarRegistroR3(insertar):
     global R3
     R3.VRam = insertar
 
-def mostrarRam(ramdata, boolram):
-    if(boolram == True):
-        print(ramdata)
 
-def mostrarRegistros(boolregistros):
-    if(boolregistros == True):
-        global R0, R1, R2, R3
-        print(f"Registros:\nRegistro0 = {R0.VRam}\nRegistro1 = {R1.VRam}\nRegistro2 = {R2.VRam}\")
+
+
+
 
 
 if __name__ == "__main__":
