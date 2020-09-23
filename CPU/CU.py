@@ -25,12 +25,9 @@ def CargarRegistroR3(insertar):
 if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
-    path = os.getcwd()
-    cpufm = open(path + "\\CPU\\1.cpufm", "r")
-    for linea in cpufm.readlines():
-        ram.instruction.append(linea)
+    alu = ALU()
     #ram = RAM()
-    print(ram.instruction)
+    #print(ram.instruction)
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
         if(strin.find(";")!= -1):
@@ -44,7 +41,7 @@ if __name__ == "__main__":
            data = strin[pincio+1: pfinal]
            #print(buscar)
            #print(data)
-           instruction = rom.BuscarInstru(buscar, R0, R1, data)
+           instruction = rom.BuscarInstru(buscar)
            #print(instruction)
            eval(instruction)
            break

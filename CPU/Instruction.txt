@@ -4,10 +4,10 @@
 0011-AND-#!-2
 0100-ILD_R0-#!-4
 0101-STR_R0-STORE_R0-#ram.InsertarValor(R0.VRam, data)!-4
-0110-STR_R1-STORE_R1-#ram.InsertarValor(R0.VRam, data)!-4
+0110-STR_R1-STORE_R1-#ram.InsertarValor(R1.VRam, data)!-4
 0111-OR-#!-2
 1000-ILD_R1-#!-4
-1001-ADD-#ALU.ADD(x,y)!-2
+1001-ADD-#alu.Add(x,y)!-2
 1010-SUB-#ram.Subtraction(x,y)!-2
 1011-JMP-JUMP-#!-4
 1100-JMP_N-JUMP_NEG-#!-4

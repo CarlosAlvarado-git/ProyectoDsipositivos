@@ -37,7 +37,7 @@ class ROM:
     def getdata(self):
         return self.data
 
-    def BuscarInstru(self, buscar, R0, R1, data):
+    def BuscarInstru(self, buscar):
         instruc = ""
         for i in range(len(self.Rom_array)):
             strin = str(self.Rom_array[i])

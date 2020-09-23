@@ -1,4 +1,5 @@
 ;Esto es comentario
+;R0 = 0, R1 = 1. ADD R0 R1 = 1001 0001
 0001 14 
 LOAD_R1 15 
 1001 R1 R0 
