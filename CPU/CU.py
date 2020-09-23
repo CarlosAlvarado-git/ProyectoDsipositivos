@@ -70,13 +70,16 @@ if __name__ == "__main__":
            pincio = pfinal
            pfinal = strin.find(" ", pfinal+1)
            data = strin[pincio+1: pfinal]
+           #Fetch----------------------------------
            #print(buscar)
            #print(data)
            instruction = rom.BuscarInstru(buscar)
+           #Decode---------------------------------
            #print(instruction)
            print("Antes de eval\n")
            eval(instruction)
            mostrarRegistros(True)
+           #Execute--------------------------------
            print("\n")
 
         
