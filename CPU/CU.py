@@ -23,9 +23,22 @@ def CargarRegistroR3(insertar):
     global R3
     R3.VRam = insertar
 
+def mostrarClock(clock, boolclock):
+    if(clock == True):
+        print(f"Clock: {clock}")
 
+def mostrarRam(ramdata, boolram):
+    if(boolram == True):
+        print(f"Ram: {ramdata}")
 
+def mostrarRegistros(boolregistros):
+    if(boolregistros == True):
+        global R0, R1, R2, R3
+        print(f"Registros:\nRegistro0: {R0.VRam}\nRegistro1: {R1.VRam}\nRegistro2: {R2.VRam}\Registro3: {R3.VRam}")
 
+def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
+    if(boolAluflags == True):
+        print(f"Zero: {AluZero}\nOverflow: {AluOverflow}\nNegative: {AluNegative}")
 
 
 
