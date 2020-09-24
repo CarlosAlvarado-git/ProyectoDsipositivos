@@ -4,6 +4,7 @@ from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
+from Integratedcircuit import Integratedcircuit
 import os
 R0 = Register(0)
 R1 = Register(0)
