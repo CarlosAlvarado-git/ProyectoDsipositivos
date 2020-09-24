@@ -42,5 +42,6 @@ class RAM:
             #convertir de binario a decimal.
             datas = int(str(datas), 2)
         self.data[datas] = valor
+        print(f"STORE en registro {datas} el valor de: {valor}")
     # una funcion que retorne el valor de data: valorData(data)
     # Store_R0: En el array RData

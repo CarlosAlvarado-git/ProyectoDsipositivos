@@ -1,10 +1,10 @@
 #import Integratedcircuit
+from Integratedcircuit import IC
 from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
-from Integratedcircuit import Integratedcircuit
 import os
 R0 = Register(0)
 R1 = Register(0)
@@ -15,17 +15,21 @@ i = 0
 def CargarRegistroR0(insertar):
     global Registros
     Registros[0].VRam = insertar
+    print(f"Load_R0: valor: {insertar}")
     #print(R0.VRam)
 def CargarRegistroR1(insertar):
     global Registros
     Registros[1].VRam = insertar
+    print(f"Load_R1: valor: {insertar}")
     #print(R1.VRam)
 def CargarRegistroR2(insertar):
     global Registros
     Registros[2].VRam = insertar
+    print(f"Load_R2: valor: {insertar}")
 def CargarRegistroR3(insertar):
     global Registros
     Registros[3].VRam = insertar
+    print(f"Load_R3: valor: {insertar}")
 
 def mostrarClock(clock, boolclock):
     if(clock == True):
@@ -43,11 +47,16 @@ def mostrarRegistros(boolregistros):
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
         print(f"Zero: {AluZero}\nOverflow: {AluOverflow}\nNegative: {AluNegative}")
-def cambioi(tamano):
+def halt(tamano):
     global i
     i = tamano
+    print("Program done")
 
-if __name__ == "__main__":
+
+
+
+def main():
+    global i
     rom = ROM()
     ram = RAM()
     alu = ALU()
@@ -106,7 +115,7 @@ if __name__ == "__main__":
             clock.sleepScreen()
             print("--------------------")
             print("----------Decode----------")
-            print(instruction)
+            #print(instruction)
             #mostrarRegistros(vistaRegistros)
             #Decode---------------------------------
             #print(instruction)
@@ -123,6 +132,83 @@ if __name__ == "__main__":
             clock.sleepScreen()
             print("--------------------")
             i = i + 1
+if __name__ == "__main__":
+    main()
+    #rom = ROM()
+    #ram = RAM()
+    #alu = ALU()
+    #clock = Clock(rom.getclock())
+    #instruction = ""
+    #for key,valor in rom.getvisualizacion().items():
+        #if(key == "RAM"):
+            #vistaRam = valor
+        #elif(key == "Registers"):
+            #vistaRegistros = valor
+        #elif(key == "Clock"):
+            #vistaClock = valor
+        #elif(key == "ALU"):
+            #vistaAlu = valor
+
+    #print(ram.instruction)
+    #mostrarRegistros(vistaRegistros)
+    #mostrarRam(ram.data,vistaRam)
+    #mostrarClock(clock.frecuencia,vistaClock)
+    #MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+    #print("--------------------")
+    #largo = len(ram.instruction)
+    #i = 0
+    #print(i)
+    #print(largo)
+    #while (i < largo):
+        #strin = str(ram.instruction[i])
+        #if(strin.find(";")!= -1):
+            #print("Hola")
+            #i = i + 1
+            #pass
+        #else:
+            #print("---------Fetch-----------")
+            #print(strin)
+            #mostrarRegistros(vistaRegistros)
+            #mostrarRam(ram.data,vistaRam)
+            #mostrarClock(clock.frecuencia,vistaClock)
+            #MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+            #clock.sleepScreen()
+            #data = ""
+            #buscar = "" 
+            #pincio = 0
+            #pfinal = strin.find(" ")
+            #buscar = strin[:pfinal]
+            #pincio = pfinal
+            #if(pincio == -1):
+                #pass
+            #else:
+                #data = strin[pincio+1: ]
+                #data = data.replace(" ", "")
+                #data = data.rstrip("\n")
+            #Fetch----------------------------------
+            #print(buscar)
+            #print(data)
+            #instruction = rom.BuscarInstru(buscar)
+            #clock.sleepScreen()
+            #print("--------------------")
+            #print("----------Decode----------")
+            #print(instruction)
+            #mostrarRegistros(vistaRegistros)
+            #Decode---------------------------------
+            #print(instruction)
+            #print("Antes de eval\n")
+            #print(f"{data}, el len es: {len(data)}")
+            #print(f"{buscar}, el len es: {len(buscar)}")
+            #eval(instruction)
+            #print("--------Execute------------")
+            #clock.sleepScreen()
+            #mostrarRegistros(vistaRegistros)
+            #mostrarRam(ram.data,vistaRam)
+            #mostrarClock(clock.frecuencia,vistaClock)
+            #MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+            #clock.sleepScreen()
+            #print("--------------------")
+            #i = i + 1
             #mostrarRegistros(True)
             #Execute--------------------------------
             #print("\n")

@@ -64,6 +64,7 @@ class ALU:
         self.Simbols(Registros[y].VRam,0,"==")
         if(self.Igual == True):
             self.zero = True
+        print(f"Suma de registros: {data[0:2]} y {data[2:4]}, poniendo el resultado en {data[2:4]}")
         # var = R0 + R1 (Si me da más de 15, veo si es par o impar y lo trunco)
         # R0 = var (si es par, 14.)
         # overflow lo vuelvo  true. lo imprimo. luego otra vez false. eso con todo. 
@@ -79,6 +80,8 @@ class ALU:
         self.Simbols(Registros[y].VRam,0,"<")
         if(self.Menor == True):
             self.Substract_with_borrow(Registros, y)
+            print(f"Sub with borrow a los registros {data[0:2]} y {data[2:4]} poniendo el valor en {data[2:4]}")
+        print(f"Sub with borrow a los registros {data[0:2]} y {data[2:4]} poniendo el valor en {data[2:4]}")
         # llamo a esta si R0 es más grande que R1, sino llamo a Borrow
         # si la resta es 0, la variables Zero la vuelvo True
         
