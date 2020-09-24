@@ -67,12 +67,14 @@ if __name__ == "__main__":
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
-        clock.sleepScreen()
         if(strin.find(";")!= -1):
             pass
         else:
+            mostrarRegistros(vistaRegistros)
+            clock.sleepScreen()
+            print(strin)
             data = ""
-            buscar = ""
+            buscar = "" 
             pincio = 0
             pfinal = strin.find(" ")
             buscar = strin[:pfinal]
@@ -88,6 +90,7 @@ if __name__ == "__main__":
             #print(data)
             instruction = rom.BuscarInstru(buscar)
             clock.sleepScreen()
+            mostrarRegistros(vistaRegistros)
             #Decode---------------------------------
             #print(instruction)
             #print("Antes de eval\n")
@@ -95,6 +98,7 @@ if __name__ == "__main__":
             #print(f"{buscar}, el len es: {len(buscar)}")
             eval(instruction)
             clock.sleepScreen()
+            mostrarRegistros(vistaRegistros)
             #mostrarRegistros(True)
             #Execute--------------------------------
             #print("\n")
