@@ -3,6 +3,7 @@ from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
+from Clock import Clock
 import os
 R0 = Register(0)
 R1 = Register(0)
@@ -47,20 +48,26 @@ if __name__ == "__main__":
     rom = ROM()
     ram = RAM()
     alu = ALU()
+    clock = Clock(rom.getclock())
     instruction = ""
-    #for key,valor in rom.getvisualizacion().items():
-        #if(key == "RAM"):
-            #vistaRam = valor
-        #elif(key == "Registers"):
-            #vistaRegistros = valor
-        #elif(key == "Clock"):
-            #vistaClock = valor
-        #elif(key == "ALU"):
-            #vistaAlu = valor
+    for key,valor in rom.getvisualizacion().items():
+        if(key == "RAM"):
+            vistaRam = valor
+        elif(key == "Registers"):
+            vistaRegistros = valor
+        elif(key == "Clock"):
+            vistaClock = valor
+        elif(key == "ALU"):
+            vistaAlu = valor
 
     #print(ram.instruction)
+    mostrarRegistros(vistaRegistros)
+    mostrarRam(ram.data,vistaRam)
+    mostrarClock(clock.frecuencia,vistaClock)
+    MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
+        clock.sleepScreen()
         if(strin.find(";")!= -1):
             pass
         else:
@@ -75,17 +82,19 @@ if __name__ == "__main__":
             else:
                 data = strin[pincio+1: ]
                 data = data.replace(" ", "")
+                data = data.rstrip("\n")
             #Fetch----------------------------------
             #print(buscar)
             #print(data)
             instruction = rom.BuscarInstru(buscar)
+            clock.sleepScreen()
             #Decode---------------------------------
             #print(instruction)
             print("Antes de eval\n")
-            data = data.rstrip("\n")
             #print(f"{data}, el len es: {len(data)}")
-            print(f"{buscar}, el len es: {len(buscar)}")
+            #print(f"{buscar}, el len es: {len(buscar)}")
             eval(instruction)
+            clock.sleepScreen()
             #mostrarRegistros(True)
             #Execute--------------------------------
             #print("\n")
