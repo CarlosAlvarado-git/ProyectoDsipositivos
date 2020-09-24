@@ -69,6 +69,7 @@ if __name__ == "__main__":
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
     print("--------------------")
     largo = len(ram.instruction)
+    i = 0
     #print(i)
     #print(largo)
     while (i < largo):
