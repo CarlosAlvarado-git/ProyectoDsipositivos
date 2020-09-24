@@ -34,8 +34,13 @@ class RAM:
             valor = int(str(valor), 2)
         return self.data[valor]
 
-    def InsertarValor(self,valor, data):
+    def InsertarValor(self,valor, datas):
         #Método usado para escribir un valor en la data
-        self.data[valor] = data
+        if(len(datas) <= 2):
+            datas = int(datas)
+        elif(len(datas) == 4):
+            #convertir de binario a decimal.
+            datas = int(str(datas), 2)
+        self.data[datas] = valor
     # una funcion que retorne el valor de data: valorData(data)
     # Store_R0: En el array RData

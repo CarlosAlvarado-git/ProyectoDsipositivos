@@ -36,7 +36,7 @@ def mostrarRam(ramdata, boolram):
 def mostrarRegistros(boolregistros):
     if(boolregistros == True):
         global Registros
-        print(f"Registros:\nRegistro0: {Registros[0].VRam}\nRegistro1: {Registros[1].VRam}\nRegistro2: {Registros[2].VRam}\nRegistro3: {Registros[3].VRam}")
+        print(f"Registros:\n Registro0: {Registros[0].VRam}\n Registro1: {Registros[1].VRam}\n Registro2: {Registros[2].VRam}\n Registro3: {Registros[3].VRam}")
 
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
@@ -65,14 +65,19 @@ if __name__ == "__main__":
     mostrarRam(ram.data,vistaRam)
     mostrarClock(clock.frecuencia,vistaClock)
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+    print("--------------------")
     for i in range (len(ram.instruction)):
         strin = str(ram.instruction[i])
         if(strin.find(";")!= -1):
             pass
         else:
-            mostrarRegistros(vistaRegistros)
-            clock.sleepScreen()
+            print("---------Fetch-----------")
             print(strin)
+            mostrarRegistros(vistaRegistros)
+            mostrarRam(ram.data,vistaRam)
+            mostrarClock(clock.frecuencia,vistaClock)
+            MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+            clock.sleepScreen()
             data = ""
             buscar = "" 
             pincio = 0
@@ -90,15 +95,24 @@ if __name__ == "__main__":
             #print(data)
             instruction = rom.BuscarInstru(buscar)
             clock.sleepScreen()
-            mostrarRegistros(vistaRegistros)
+            print("--------------------")
+            print("----------Decode----------")
+            print(instruction)
+            #mostrarRegistros(vistaRegistros)
             #Decode---------------------------------
             #print(instruction)
             #print("Antes de eval\n")
             #print(f"{data}, el len es: {len(data)}")
             #print(f"{buscar}, el len es: {len(buscar)}")
             eval(instruction)
+            print("--------Execute------------")
             clock.sleepScreen()
             mostrarRegistros(vistaRegistros)
+            mostrarRam(ram.data,vistaRam)
+            mostrarClock(clock.frecuencia,vistaClock)
+            MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+            clock.sleepScreen()
+            print("--------------------")
             #mostrarRegistros(True)
             #Execute--------------------------------
             #print("\n")
