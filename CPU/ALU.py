@@ -3,7 +3,7 @@ class ALU:
     def __init__ (self):
         #self.Opcode = Opcode
         #self.Input = Input
-        self.zero = False
+        self.Zero = False
         self.Overflow = False
         self.Negative = False 
         self.Igual = False
@@ -29,7 +29,7 @@ class ALU:
             return x
     def EncontrarReg2(self, data):
         bit1 = data[2:4]
-        print(f"Esto es bit1 en la segunda funcion: {bit1} y esto es data: {data}")
+        #print(f"Esto es bit1 en la segunda funcion: {bit1} y esto es data: {data}")
         x = 0
         if(bit1 == "00" or bit1 == "R0"):
             x = 0
@@ -47,9 +47,9 @@ class ALU:
         #data = data.replace(" ", "")
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
-        print(type(Registros))
-        print(type(x))
-        print(type(y))
+        #print(type(Registros))
+        #print(type(x))
+        #print(type(y))
         Registros[y].VRam = Registros[x].VRam + Registros[y].VRam
         self.Simbols(Registros[y].VRam,15,">")
         if (self.Mayor == True):

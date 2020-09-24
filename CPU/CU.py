@@ -36,7 +36,7 @@ def mostrarRam(ramdata, boolram):
 def mostrarRegistros(boolregistros):
     if(boolregistros == True):
         global Registros
-        print(f"Registros:\nRegistro0: {Registros[0].VRam}\nRegistro1: {Registros[1].VRam}\nRegistro2: {Registros[2].VRam}\Registro3: {Registros[3].VRam}")
+        print(f"Registros:\nRegistro0: {Registros[0].VRam}\nRegistro1: {Registros[1].VRam}\nRegistro2: {Registros[2].VRam}\nRegistro3: {Registros[3].VRam}")
 
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
@@ -90,7 +90,7 @@ if __name__ == "__main__":
             clock.sleepScreen()
             #Decode---------------------------------
             #print(instruction)
-            print("Antes de eval\n")
+            #print("Antes de eval\n")
             #print(f"{data}, el len es: {len(data)}")
             #print(f"{buscar}, el len es: {len(buscar)}")
             eval(instruction)
