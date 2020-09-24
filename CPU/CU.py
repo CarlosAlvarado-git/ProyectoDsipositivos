@@ -12,6 +12,7 @@ R2 = Register(0)
 R3 = Register(0)
 Registros = [R0, R1, R2, R3]
 i = 0
+
 def CargarRegistroR0(insertar):
     global Registros
     if (type(insertar) == int):
@@ -25,7 +26,7 @@ def CargarRegistroR0(insertar):
         Registros[0].VRam = insertar
     print(f"Load_R0: valor: {insertar}")
     #print(R0.VRam)
-    
+
 def CargarRegistroR1(insertar):
     global Registros
     if (type(insertar) == int):
@@ -42,28 +43,12 @@ def CargarRegistroR1(insertar):
 
 def CargarRegistroR2(insertar):
     global Registros
-    if (type(insertar) == int):
-        Registros[2].VRam = insertar
-    else:
-        if(len(insertar) <= 2):
-            insertar = int(insertar)
-        elif(len(insertar) == 4):
-            #convertir de binario a decimal.
-            insertar = int(str(insertar), 2)
-        Registros[2].VRam = insertar
+    Registros[2].VRam = insertar
     print(f"Load_R2: valor: {insertar}")
 
 def CargarRegistroR3(insertar):
     global Registros
-    if (type(insertar) == int):
-        Registros[3].VRam = insertar
-    else:
-        if(len(insertar) <= 2):
-            insertar = int(insertar)
-        elif(len(insertar) == 4):
-            #convertir de binario a decimal.
-            insertar = int(str(insertar), 2)
-        Registros[3].VRam = insertar
+    Registros[3].VRam = insertar
     print(f"Load_R3: valor: {insertar}")
 
 def mostrarClock(clock, boolclock):
