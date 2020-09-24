@@ -10,6 +10,7 @@ R1 = Register(0)
 R2 = Register(0)
 R3 = Register(0)
 Registros = [R0, R1, R2, R3]
+i = 0
 def CargarRegistroR0(insertar):
     global Registros
     Registros[0].VRam = insertar
@@ -41,7 +42,8 @@ def mostrarRegistros(boolregistros):
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
         print(f"Zero: {AluZero}\nOverflow: {AluOverflow}\nNegative: {AluNegative}")
-def cambioi(i, tamano):
+def cambioi(tamano):
+    global i
     i = tamano
 
 if __name__ == "__main__":
@@ -66,9 +68,14 @@ if __name__ == "__main__":
     mostrarClock(clock.frecuencia,vistaClock)
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
     print("--------------------")
-    for i in range (len(ram.instruction)):
+    largo = len(ram.instruction)
+    #print(i)
+    #print(largo)
+    while (i < largo):
         strin = str(ram.instruction[i])
         if(strin.find(";")!= -1):
+            #print("Hola")
+            i = i + 1
             pass
         else:
             print("---------Fetch-----------")
@@ -113,6 +120,7 @@ if __name__ == "__main__":
             MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
             clock.sleepScreen()
             print("--------------------")
+            i = i + 1
             #mostrarRegistros(True)
             #Execute--------------------------------
             #print("\n")
