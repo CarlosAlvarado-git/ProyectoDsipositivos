@@ -185,7 +185,30 @@ def main():
         elif(key == "ALU"):
             vistaAlu = valor
     
-    #preguntar al usuario si quiere en clock o debug
+    
+    #opcion = 0
+    #while(opcion < 1 or opcion > 7):
+        
+        #print(" 1: 1.cpufm\n 2: 2.cpufm\n 3: 3.cpufm\n 4: 4.cpufm\n 5: 5.cpufm\n 6: 6.cpufm\n 7: 7.cpufm\n")
+        #opcion = int(input("Ingrese el numero del programa que desea ejecutar: "))
+        #f(opcion == 1):
+            #ram = RAM("1.cpufm")
+        #elif(opcion == 2):
+            #ram = RAM("2.cpufm")
+        #elif(opcion == 3):
+            #ram = RAM("3.cpufm")
+        #elif(opcion == 4):
+            #ram = RAM("4.cpufm")
+        #elif(opcion == 5):
+            #ram = RAM("5.cpufm")
+        #elif(opcion == 6):
+            #ram = RAM("6.cpufm")
+        #lif(opcion == 7):
+            #ram = RAM("7.cpufm")
+        #else:
+            #print(f"El numero {opcion} no esta en el rango")
+    
+
     # si es debug clock = Clock(0)
     #print(ram.instruction)
     mostrarRegistros(vistaRegistros)
