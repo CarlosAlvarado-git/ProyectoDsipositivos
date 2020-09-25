@@ -13,7 +13,7 @@ R3 = Register(0)
 Registros = [R0, R1, R2, R3]
 i = 0
 alu = ALU()
-#ram = RAM() ----
+ram = RAM()
 def CargarRegistroR0(insertar):
     global Registros, ram
     if (type(insertar) == int):
@@ -185,29 +185,7 @@ def main():
         elif(key == "ALU"):
             vistaAlu = valor
     
-    #comentarear todo esto ----------------------------------------------------------------------------------------------
-    opcion = 0
-    while(opcion < 1 or opcion > 7):
-        
-        print(" 1: 1.cpufm\n 2: 2.cpufm\n 3: 3.cpufm\n 4: 4.cpufm\n 5: 5.cpufm\n 6: 6.cpufm\n 7: 7.cpufm\n")
-        opcion = int(input("Ingrese el numero del programa que desea ejecutar: "))
-        if(opcion == 1):
-            ram = RAM("1.cpufm")
-        elif(opcion == 2):
-            ram = RAM("2.cpufm")
-        elif(opcion == 3):
-            ram = RAM("3.cpufm")
-        elif(opcion == 4):
-            ram = RAM("4.cpufm")
-        elif(opcion == 5):
-            ram = RAM("5.cpufm")
-        elif(opcion == 6):
-            ram = RAM("6.cpufm")
-        elif(opcion == 7):
-            ram = RAM("7.cpufm")
-        else:
-            print(f"El numero {opcion} no esta en el rango")
-    
+    #comentarear todo esto ----------------------------------------------------------------------------------------------    
     opcion = 0
     while(opcion <1 or opcion>2):
         print("\nComo desea correr el programa")
