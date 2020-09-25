@@ -13,69 +13,132 @@ R3 = Register(0)
 Registros = [R0, R1, R2, R3]
 i = 0
 alu = ALU()
-
+ram = RAM()
 def CargarRegistroR0(insertar):
-    global Registros
+    global Registros, ram
     if (type(insertar) == int):
-        Registros[0].VRam = insertar
+        if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
+            Registros[0].VRam = insertar
+            print(f"Load_R0: valor: {insertar}")
+        else:
+            detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2):
+        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
             insertar = int(insertar)
-        elif(len(insertar) == 4):
+            Registros[0].VRam = insertar
+            print(f"Load_R0: valor: {insertar}")
+        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
-        Registros[0].VRam = insertar
-    print(f"Load_R0: valor: {insertar}")
+            Registros[0].VRam = insertar
+            print(f"Load_R0: valor: {insertar}")
+        else:
+            detener(len(ram.instruction))   
+    
     #print(R0.VRam)
 
 def CargarRegistroR1(insertar):
-    global Registros
+    global Registros, ram
     if (type(insertar) == int):
-        Registros[1].VRam = insertar
+        if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
+            Registros[1].VRam = insertar
+            print(f"Load_R1: valor: {insertar}")
+        else:
+            detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2):
+        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
             insertar = int(insertar)
-        elif(len(insertar) == 4):
+            Registros[1].VRam = insertar
+            print(f"Load_R1: valor: {insertar}")
+        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
-        Registros[1].VRam = insertar
-    print(f"Load_R1: valor: {insertar}")
-    #print(R1.VRam)
+            Registros[1].VRam = insertar
+            print(f"Load_R1: valor: {insertar}")
+        else:
+            detener(len(ram.instruction)) 
 
 def CargarRegistroR2(insertar):
-    global Registros
-    Registros[2].VRam = insertar
-    print(f"Load_R2: valor: {insertar}")
+    if (type(insertar) == int):
+        if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
+            Registros[2].VRam = insertar
+            print(f"Load_R2: valor: {insertar}")
+        else:
+            detener(len(ram.instruction))
+    else:
+        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+            insertar = int(insertar)
+            Registros[2].VRam = insertar
+            print(f"Load_R2: valor: {insertar}")
+        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+            #convertir de binario a decimal.
+            insertar = int(str(insertar), 2)
+            Registros[2].VRam = insertar
+            print(f"Load_R2: valor: {insertar}")
+        else:
+            detener(len(ram.instruction)) 
 
 def CargarRegistroR3(insertar):
-    global Registros
-    Registros[3].VRam = insertar
-    print(f"Load_R3: valor: {insertar}")
+    if (type(insertar) == int):
+        if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
+            Registros[3].VRam = insertar
+            print(f"Load_R3: valor: {insertar}")
+        else:
+            detener(len(ram.instruction))
+    else:
+        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+            insertar = int(insertar)
+            Registros[3].VRam = insertar
+            print(f"Load_R3: valor: {insertar}")
+        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+            #convertir de binario a decimal.
+            insertar = int(str(insertar), 2)
+            Registros[3].VRam = insertar
+            print(f"Load_R3: valor: {insertar}")
+        else:
+            detener(len(ram.instruction)) 
 
 def Jump(registro):
-    global i
-    if (type(registro) == int):
+    global i, ram
+    if (type(registro) == int and (registro >= 0 and registro <= 15)):
         i = registro
+    elif(len(registro) <= 2):
+        registro = int(registro)
+        if(registro >= 0 and registro <= 15):
+            i = registro
+        else: 
+            detener(len(ram.instruction))
+    elif(len(registro) == 4):
+        #convertir de binario a decimal.
+        registro = int(str(registro), 2)
+        if(registro >= 0 and registro <= 15):
+            i = registro
+        else: 
+            detener(len(ram.instruction))
     else:
-        if(len(registro) <= 2):
-            registro = int(registro)
-        elif(len(registro) == 4):
-            #convertir de binario a decimal.
-            registro = int(str(registro), 2)
-        i = registro
+        detener(len(ram.instruction))
 
 def JumpNeg(registro):
     global i,alu
     if(alu.Negative == True):
-        if (type(registro) == int):
+        if (type(registro) == int and (registro >= 0 and registro <= 15)):
             i = registro
         else:
             if(len(registro) <= 2):
                 registro = int(registro)
+                if(registro >= 0 and registro <= 15):
+                    i = registro
+                else: 
+                    detener(len(ram.instruction))
             elif(len(registro) == 4):
                 #convertir de binario a decimal.
                 registro = int(str(registro), 2)
-            i = registro
+                if(registro >= 0 and registro <= 15):
+                    i = registro
+                else: 
+                    detener(len(ram.instruction))
+            else:
+                detener(len(ram.instruction))
 
 def mostrarClock(clock, boolclock):
     if(clock == True):
@@ -97,15 +160,19 @@ def halt(tamano):
     global i
     i = tamano
     print("Program done")
+def detener(tamano):
+    global i, ram
+    print(f"Error en la línea {i}: {ram.instruction[i]}")
+    i = tamano
 
 
 
 
 def main():
-    global i,alu
+    global i,alu, ram
     rom = ROM()
-    ram = RAM()
     #alu = ALU()
+    #ram = RAM()
     clock = Clock(rom.getclock())
     instruction = ""
     for key,valor in rom.getvisualizacion().items():
@@ -125,7 +192,7 @@ def main():
     mostrarRam(ram.data,vistaRam)
     mostrarClock(clock.frecuencia,vistaClock)
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
-    print("--------------------")
+    print("-----------PROGRAMA KEYSENSITIVE COMANDOS EN MAYUSCULAS---------")
     largo = len(ram.instruction)
     i = 0
     #print(i)
@@ -170,7 +237,20 @@ def main():
             #print("Antes de eval\n")
             #print(f"{data}, el len es: {len(data)}")
             #print(f"{buscar}, el len es: {len(buscar)}")
-            eval(instruction)
+            if(data.isdigit() == True):
+                if(len(data) == 4):
+                    eval(instruction)
+                elif(len(data) == 2 and (int(data) >= 0 and int(data) <= 15)):
+                    eval(instruction)
+                else:
+                    detener(len(ram.instruction))
+            elif((data[0:2] == "R0" or data[0:2] == "R1" or data[0:2] == "R2" or data[0:2] == "R3") and (data[2:] == "R0" or data[2:] == "R1" or data[2:] == "R2" or data[2:] == "R3")):
+                eval(instruction)
+            else:
+                if(instruction == "halt(len(ram.instruction))" or instruction == "print(ram.data(data))"):
+                    eval(instruction)
+                else:
+                    detener(len(ram.instruction))
             print("--------Execute------------")
             clock.sleepScreen()
             mostrarRegistros(vistaRegistros)

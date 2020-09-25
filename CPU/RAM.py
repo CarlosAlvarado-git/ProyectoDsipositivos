@@ -35,19 +35,37 @@ class RAM:
     def valorData(self, valor):#Método usado para extraer un valor de la dada
         if(len(valor) <= 2):
             valor = int(valor)
+            if(valor >= 0 and valor <= 15):
+                return self.data[valor]
+            else:
+                return -1
         elif(len(valor) == 4):
             #convertir de binario a decimal.
             valor = int(str(valor), 2)
-        return self.data[valor]
+            if(valor >= 0 and valor <= 15):
+                return self.data[valor]
+            else:
+                return -1
+        
 
     def InsertarValor(self,valor, datas):
         #Método usado para escribir un valor en la data
         if(len(datas) <= 2):
             datas = int(datas)
+            if(datas >= 0 and datas <= 15):
+                self.data[datas] = valor
+                print(f"STORE en registro {datas} el valor de: {valor}")
+            else:
+                #CU.detener(len(self.instruction))
+                pass
         elif(len(datas) == 4):
             #convertir de binario a decimal.
             datas = int(str(datas), 2)
-        self.data[datas] = valor
-        print(f"STORE en registro {datas} el valor de: {valor}")
+            if(datas >= 0 and datas <= 15):
+                self.data[datas] = valor
+                print(f"STORE en registro {datas} el valor de: {valor}")
+            else:
+                #CU.detener(len(self.instruction))
+                pass
     # una funcion que retorne el valor de data: valorData(data)
     # Store_R0: En el array RData

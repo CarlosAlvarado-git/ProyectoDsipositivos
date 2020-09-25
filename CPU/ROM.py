@@ -46,6 +46,6 @@ class ROM:
                 instruc =  strin[pinicial: pfinal]
                 break
             else:
-                instruc = "print('No existe instrucción')"
+                instruc = "detener(len(ram.instruction))"
         
         return instruc
