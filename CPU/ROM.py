@@ -8,6 +8,7 @@ class ROM:
         self.Rom_array = []
         for linea in self.ROM.readlines():
             self.Rom_array.append(linea)
+
         #leo el archivo y guardo en lo que esta en la tabla de Set Instruccion.
         #prueba
         #Aqui se termina el instruction set table-----------------------------------------

@@ -4,11 +4,17 @@ class RAM:
     def __init__ (self):
         R = ROM()
         self.data = R.getdata()
-        self.instruction = []
+        self.instructioncon = []
         self.path = os.getcwd()
         cpufm = open(self.path + "\\CPU\\1.cpufm", "r")
         for linea in cpufm.readlines():
-            self.instruction.append(linea)
+            self.instructioncon.append(linea)
+        
+        self.instruction = []
+        for l in self.instructioncon:
+            if(l.find(";") == -1):
+                self.instruction.append(l)
+        
         #for section in self.cfg:
          #   print(section)
         #print(self.cfg["visualization"])
