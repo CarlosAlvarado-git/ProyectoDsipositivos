@@ -1,4 +1,4 @@
-;Guargar resultados en R2 y R3
+;Guargar resultados en R2, Jump_N a la línea 7.
 LOAD_R0 1010
 LOAD_R1 3
 SUB R1 R0

@@ -23,11 +23,11 @@ def CargarRegistroR0(insertar):
         else:
             detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+        if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
             insertar = int(insertar)
             Registros[0].VRam = insertar
             print(f"Load_R0: valor: {insertar}")
-        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+        elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
             Registros[0].VRam = insertar
@@ -39,6 +39,7 @@ def CargarRegistroR0(insertar):
 
 def CargarRegistroR1(insertar):
     global Registros, ram
+    print(type(insertar))
     if (type(insertar) == int):
         if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
             Registros[1].VRam = insertar
@@ -46,11 +47,11 @@ def CargarRegistroR1(insertar):
         else:
             detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+        if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
             insertar = int(insertar)
             Registros[1].VRam = insertar
             print(f"Load_R1: valor: {insertar}")
-        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+        elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
             Registros[1].VRam = insertar
@@ -66,11 +67,11 @@ def CargarRegistroR2(insertar):
         else:
             detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+        if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
             insertar = int(insertar)
             Registros[2].VRam = insertar
             print(f"Load_R2: valor: {insertar}")
-        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+        elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
             Registros[2].VRam = insertar
@@ -86,11 +87,11 @@ def CargarRegistroR3(insertar):
         else:
             detener(len(ram.instruction))
     else:
-        if(len(insertar) <= 2 and (insertar >= 0 and insertar <= 15)):
+        if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
             insertar = int(insertar)
             Registros[3].VRam = insertar
             print(f"Load_R3: valor: {insertar}")
-        elif(len(insertar) == 4 and (insertar >= 0 and insertar <= 15)):
+        elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
             #convertir de binario a decimal.
             insertar = int(str(insertar), 2)
             Registros[3].VRam = insertar
@@ -101,18 +102,21 @@ def CargarRegistroR3(insertar):
 def Jump(registro):
     global i, ram
     if (type(registro) == int and (registro >= 0 and registro <= 15)):
-        i = registro
+        i = registro - 1 
+        print(f"Salto a la línea {i+1}")
     elif(len(registro) <= 2):
         registro = int(registro)
         if(registro >= 0 and registro <= 15):
-            i = registro
+            i = registro - 1
+            print(f"Salto a la línea {i+1}")
         else: 
             detener(len(ram.instruction))
     elif(len(registro) == 4):
         #convertir de binario a decimal.
         registro = int(str(registro), 2)
         if(registro >= 0 and registro <= 15):
-            i = registro
+            i = registro - 1
+            print(f"Salto a la línea {i+1}")
         else: 
             detener(len(ram.instruction))
     else:
@@ -120,21 +124,24 @@ def Jump(registro):
 
 def JumpNeg(registro):
     global i,alu
-    if(alu.Negative == True):
+    if(alu.N > 0):
         if (type(registro) == int and (registro >= 0 and registro <= 15)):
-            i = registro
+            i = registro - 1
+            print(f"Salto a la línea {i+1} por Negative true")
         else:
             if(len(registro) <= 2):
                 registro = int(registro)
                 if(registro >= 0 and registro <= 15):
-                    i = registro
+                    i = registro - 1
+                    print(f"Salto a la línea {i+1} por Negative true")
                 else: 
                     detener(len(ram.instruction))
             elif(len(registro) == 4):
                 #convertir de binario a decimal.
                 registro = int(str(registro), 2)
                 if(registro >= 0 and registro <= 15):
-                    i = registro
+                    i = registro - 1
+                    print(f"Salto a la línea {i+1} por Negative true")
                 else: 
                     detener(len(ram.instruction))
             else:
@@ -253,7 +260,7 @@ def main():
             if(data.isdigit() == True):
                 if(len(data) == 4):
                     eval(instruction)
-                elif(len(data) == 2 and (int(data) >= 0 and int(data) <= 15)):
+                elif(len(data) <= 2 and (int(data) >= 0 and int(data) <= 15)):
                     eval(instruction)
                 else:
                     detener(len(ram.instruction))
@@ -273,6 +280,7 @@ def main():
             clock.sleepScreen()
             print("--------------------")
             i = i + 1
+            alu.reset()
             #comentarear esto------------------------------------------------------------------
             if(opcion == 2):
                 Enter = input("press Enter to continue to the next instruction...")

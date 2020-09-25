@@ -4,8 +4,11 @@ class ALU:
         #self.Opcode = Opcode
         #self.Input = Input
         self.Zero = False
+        self.Z = 0
         self.Overflow = False
+        self.O = 0
         self.Negative = False 
+        self.N = 0
         self.Igual = False
         self.Mayor = False
         self.Menor = False
@@ -62,6 +65,7 @@ class ALU:
         self.Simbols(Registros[y].VRam,15,">")
         if (self.Mayor == True):
             self.Overflow = True
+            self.O = self.O + 1
             if (Registros[y].VRam % 2 == 0):
                 Registros[y].VRam = 14
             else:
@@ -82,16 +86,19 @@ class ALU:
         self.Simbols(Registros[y].VRam,0,"==")
         if(self.Igual == True):
             self.zero = True
+            self.Z = self.Z + 1
         self.Simbols(Registros[y].VRam,0,"<")
         if(self.Menor == True):
             self.Substract_with_borrow(Registros, y)
             print(f"Sub with borrow a los registros {data[0:2]} y {data[2:4]} poniendo el valor en {data[2:4]}")
-        print(f"Sub with borrow a los registros {data[0:2]} y {data[2:4]} poniendo el valor en {data[2:4]}")
+        else:
+            print(f"Sub a los registros {data[0:2]} y {data[2:4]} poniendo el valor en {data[2:4]}")
         # llamo a esta si R0 es más grande que R1, sino llamo a Borrow
         # si la resta es 0, la variables Zero la vuelvo True
         
-    def Subtract_with_borrow(self, Registros,y):#llamar al ser la resta negativa.
+    def Substract_with_borrow(self, Registros,y):#llamar al ser la resta negativa.
         self.Negative = True
+        self.N = self.N + 1
         Registros[y].VRam = (Registros[y].VRam)*(-1)
         
     def Ocomplement(self):
