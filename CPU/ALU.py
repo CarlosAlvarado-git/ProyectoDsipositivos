@@ -12,6 +12,14 @@ class ALU:
         
     #Add(self, data, Register R0, R1, R2, R3)
     #la data de divede y se ve que registro es. "00 0 R0" = R0, 01 = R1, 10 = R2, 11 = R3
+    def reset(self):
+        self.Zero = False
+        self.Overflow = False
+        self.Negative = False
+        self.Igual = False
+        self.Mayor = False
+        self.Meno = False
+        
     def EncontrarReg(self, data):
         bit1 = data[0:2]
         x = 0
@@ -58,9 +66,6 @@ class ALU:
                 Registros[y].VRam = 14
             else:
                 Registros[y].VRam = 15
-        self.Simbols(Registros[y].VRam,0,"<")
-        if (self.Menor == True):
-            self.Negative == True
         self.Simbols(Registros[y].VRam,0,"==")
         if(self.Igual == True):
             self.zero = True
@@ -70,7 +75,7 @@ class ALU:
         # overflow lo vuelvo  true. lo imprimo. luego otra vez false. eso con todo. 
         # si la suma da más de 15, si el número es par, lo truncamos a 14 y si es impar lo truncamos a 15 
     def Subtraction(self, data, Registros): 
-        data = data.replace(" ", "")
+        #data = data.replace(" ", "")
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
         Registros[y].VRam = Registros[x].VRam - Registros[y].VRam

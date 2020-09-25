@@ -12,6 +12,7 @@ R2 = Register(0)
 R3 = Register(0)
 Registros = [R0, R1, R2, R3]
 i = 0
+alu = ALU()
 
 def CargarRegistroR0(insertar):
     global Registros
@@ -51,6 +52,31 @@ def CargarRegistroR3(insertar):
     Registros[3].VRam = insertar
     print(f"Load_R3: valor: {insertar}")
 
+def Jump(registro):
+    global i
+    if (type(registro) == int):
+        i = registro
+    else:
+        if(len(registro) <= 2):
+            registro = int(registro)
+        elif(len(registro) == 4):
+            #convertir de binario a decimal.
+            registro = int(str(registro), 2)
+        i = registro
+
+def JumpNeg(registro):
+    global i,alu
+    if(alu.Negative == True):
+        if (type(registro) == int):
+            i = registro
+        else:
+            if(len(registro) <= 2):
+                registro = int(registro)
+            elif(len(registro) == 4):
+                #convertir de binario a decimal.
+                registro = int(str(registro), 2)
+            i = registro
+
 def mostrarClock(clock, boolclock):
     if(clock == True):
         print(f"Clock: {clock}")
@@ -76,10 +102,10 @@ def halt(tamano):
 
 
 def main():
-    global i
+    global i,alu
     rom = ROM()
     ram = RAM()
-    alu = ALU()
+    #alu = ALU()
     clock = Clock(rom.getclock())
     instruction = ""
     for key,valor in rom.getvisualizacion().items():
