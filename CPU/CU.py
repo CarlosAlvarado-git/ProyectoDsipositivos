@@ -91,7 +91,9 @@ def main():
             vistaClock = valor
         elif(key == "ALU"):
             vistaAlu = valor
-
+    
+    #preguntar al usuario si quiere en clock o debug
+    # si es debug clock = Clock(0)
     #print(ram.instruction)
     mostrarRegistros(vistaRegistros)
     mostrarRam(ram.data,vistaRam)
