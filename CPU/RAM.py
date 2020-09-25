@@ -1,14 +1,14 @@
 from ROM import ROM
 import os
 class RAM:
-    def __init__ (self):
-    #def __init__ (self, archivo):
+    #def __init__ (self):---
+    def __init__ (self, archivo):
         R = ROM()
         self.data = R.getdata()
         self.instructioncon = []
         self.path = os.getcwd()
-        cpufm = open(self.path + "\\CPU\\1.cpufm", "r")
-        #cpufm = open(self.path + "\\CPU\\" + archivo, "r")
+        #cpufm = open(self.path + "\\CPU\\1.cpufm", "r")---
+        cpufm = open(self.path + "\\CPU\\" + archivo, "r")
         for linea in cpufm.readlines():
             self.instructioncon.append(linea)
         
