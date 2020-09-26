@@ -146,7 +146,8 @@ def JumpNeg(registro):
                     detener(len(ram.instruction))
             else:
                 detener(len(ram.instruction))
-
+    else:
+        print("No hay salto de línea")
 def mostrarClock(clock, boolclock):
     if(clock == True):
         print(f"Clock: {clock}")
@@ -235,9 +236,15 @@ def main():
             buscar = "" 
             pincio = 0
             pfinal = strin.find(" ")
-            buscar = strin[:pfinal]
+            print(pfinal)
+            if(pfinal != -1):
+                buscar = strin[:pfinal]
+            else:
+                buscar = strin.replace(" ", "")
+                buscar = buscar.rstrip("\n")
             pincio = pfinal
             if(pincio == -1):
+                data = ""
                 pass
             else:
                 data = strin[pincio+1: ]
@@ -267,7 +274,9 @@ def main():
             elif((data[0:2] == "R0" or data[0:2] == "R1" or data[0:2] == "R2" or data[0:2] == "R3") and (data[2:] == "R0" or data[2:] == "R1" or data[2:] == "R2" or data[2:] == "R3")):
                 eval(instruction)
             else:
-                if(instruction == "halt(len(ram.instruction))" or instruction == "print(ram.data(data))"):
+                #print(buscar)
+                #print(instruction)
+                if(instruction == "halt(len(ram.instruction))"):
                     eval(instruction)
                 else:
                     detener(len(ram.instruction))
