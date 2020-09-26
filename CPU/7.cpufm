@@ -1,10 +1,14 @@
+;Multiplicar 3 por 3 y store en data 0
+; En data 8, se debe poner el valor de 3. 
 LOAD_R3 5
 LOAD_R1 5
 LOAD_R2 8
 ILD_R0 1
 ADD R3 R1
-SUB R0 R2
-JUMP_N 8
-JUMP 4
+SUB R2 R0
+JUMP_N 1010
+STR_R0 1
+LOAD_R2 1
+JUMP 3
 STR_R1 0 
 HALT

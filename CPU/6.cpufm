@@ -1,8 +1,10 @@
-;Leer la posicion 14 y ver si es par o impar
+;Leer la posicion 14 y ver si es par o impar y mostrar 1 o 0 en la posicion 15
 LOAD_R0 14
 ILD_R1 2
-SUB R1 R0
-JUMP_NEG 5 
-JUMP 2
+SUB R0 R1
+JUMP_NEG 7
+STR_R1 1
+LOAD_R0 1 
+JUMP 1
 STR_R0 15
 HALT

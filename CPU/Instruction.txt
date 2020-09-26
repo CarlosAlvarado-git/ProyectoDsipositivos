@@ -1,4 +1,4 @@
-0000-OUTPUT-OUT-#print(ram.data(data))!-4
+0000-OUTPUT-OUT-#OR_(ram.data(data), data)!-4
 0001-LOAD_R0-LD_R0-#CargarRegistroR0(ram.valorData(data))!-4
 0010-LOAD_R1-LD_R1-#CargarRegistroR1(ram.valorData(data))!-4
 0011-AND-#!-2

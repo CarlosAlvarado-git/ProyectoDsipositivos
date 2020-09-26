@@ -10,7 +10,10 @@ R0 = Register(0)
 R1 = Register(0)
 R2 = Register(0)
 R3 = Register(0)
-Registros = [R0, R1, R2, R3]
+PC = Register(0) #PC = IR
+IAR = Register("")
+OR = Register(0)
+Registros = [R0, R1, R2, R3, PC, IAR, OR]
 i = 0
 alu = ALU()
 ram = RAM()
@@ -172,12 +175,16 @@ def detener(tamano):
     global i, ram
     print(f"Error en la línea {i}: {ram.instruction[i]}")
     i = tamano
+def OR_(val, pos):
+    global Registros
+    Registros[6].VRam = int(val)
+    print(f"OUTPUT: {pos}, valor: {val}")
 
 
 
 
 def main():
-    global i,alu, ram
+    global i,alu, ram, Registros
     rom = ROM()
     #alu = ALU()
     #ram = RAM()
@@ -227,6 +234,8 @@ def main():
         else:
             print("---------Fetch-----------")
             print(strin)
+            Registros[4].VRam = i
+            Registros[5].VRam = strin
             mostrarRegistros(vistaRegistros)
             mostrarRam(ram.data,vistaRam)
             mostrarClock(clock.frecuencia,vistaClock)
