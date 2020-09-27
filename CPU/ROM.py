@@ -41,10 +41,14 @@ class ROM:
             strin = str(self.Rom_array[i])
             #print(buscar)
             if(strin.find(buscar) != -1):
-                pinicial = int(1 + int(strin.find("#")))
-                pfinal = strin.find("!")
-                instruc =  strin[pinicial: pfinal]
-                break
+                if(buscar == "OR"):
+                    instruc = "self.alu.OR(data, self.Registros)"
+                    break
+                else:
+                    pinicial = int(1 + int(strin.find("#")))
+                    pfinal = strin.find("!")
+                    instruc =  strin[pinicial: pfinal]
+                    break
             else:
                 instruc = "detener(len(ram.instruction))"
         

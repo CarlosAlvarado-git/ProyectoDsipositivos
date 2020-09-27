@@ -239,7 +239,7 @@ class CU(IC):
     def detener(self,tamano):
         print(f"Error en la línea {self.i}: {self.ram.instruction[self.i]}")
         self.i = tamano
-    def OR_(self, val, pos):
+    def Ore_(self, val, pos):
         self.Registros[6].VRam = int(val)
         print(f"OUTPUT: {pos}, valor: {val}")
     def PrinOneComplement(self, dato):
