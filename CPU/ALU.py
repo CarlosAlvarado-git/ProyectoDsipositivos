@@ -119,11 +119,13 @@ class ALU:
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
         Registros[y].VRam = Registros[x].VRam and Registros[y].VRam
+        print(f"AND entre {Registros[x]} y {Registros[y]}.")
         
     def OR(self, data, Registros):
         x = self.EncontrarReg(data)
         y = self.EncontrarReg2(data)
         Registros[y].VRam = Registros[x].VRam or Registros[y].VRam
+        print(f"Or entre {Registros[x]} y {Registros[y]}.")
 
     def Simbols(self, R1, R0, simbolo):
         #self.Mayor = False

@@ -1,10 +1,10 @@
-#import Integratedcircuit
+from Integratedcircuit import IC
 from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
-class CU():
+class CU(IC):
     def CargarRegistroR0(self, insertar):
         if (type(insertar) == int):
             if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
@@ -238,7 +238,13 @@ class CU():
     def OR_(self, val, pos):
         self.Registros[6].VRam = int(val)
         print(f"OUTPUT: {pos}, valor: {val}")
-    
+    def PrinOneComplement(self, dato):
+        comple = self.alu.Ocomplement(dato)
+        print(f"One complemente de {dato} es: {comple}")
+    def PrinTwoComplement(self, dato):
+        comple = self.alu.Twcomplement(dato)
+        print(f"Two´s complemente de {dato} es: {comple}")
+
     def main(self):
         rom = ROM()
         #alu = ALU()
@@ -302,7 +308,7 @@ class CU():
                 buscar = "" 
                 pincio = 0
                 pfinal = strin.find(" ")
-                print(pfinal)
+                #print(pfinal)
                 if(pfinal != -1):
                     buscar = strin[:pfinal]
                 else:
@@ -360,19 +366,21 @@ class CU():
                 if(opcion == 2):
                     Enter = input("press Enter to continue to the next instruction...")
                 #----------------------------------------------------------------------------------
-    def __init__(self):
+    
+    #def __init__(self):
         #Integratedcircuit.__init__(self)
-        self.R0 = Register(0)
-        self.R1 = Register(0)
-        self.R2 = Register(0)
-        self.R3 = Register(0)
-        self.PC = Register(0) #PC = IR
-        self.IAR = Register("")
-        self.OR = Register(0)
-        self.Registros = [self.R0, self.R1, self.R2, self.R3, self.PC, self.IAR, self.OR]
-        self.i = 0
-        self.alu = ALU()
-        self.ram = RAM()
+        #self.R0 = Register(0)
+        #self.R1 = Register(0)
+        #self.R2 = Register(0)
+        #self.R3 = Register(0)
+        #self.PC = Register(0) #PC = IR
+        #self.IAR = Register("")
+        #self.OR = Register(0)
+        #self.Registros = [self.R0, self.R1, self.R2, self.R3, self.PC, self.IAR, self.OR]
+        #self.i = 0
+        #self.alu = ALU()
+        #self.ram = RAM()
+    def runmain(self):
         self.main()
         #rom = ROM()
         #ram = RAM()
