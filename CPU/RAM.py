@@ -31,7 +31,7 @@ class RAM:
                 print(f"El numero {opcion} no esta en el rango")
 
 
-        cpufm = open(self.path + "\\CPU\\" + archivo, "r")
+        cpufm = open(archivo, "r")
         for linea in cpufm.readlines():
             self.instructioncon.append(linea)
         

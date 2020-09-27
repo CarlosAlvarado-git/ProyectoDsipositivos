@@ -4,7 +4,7 @@ class ROM:
     def __init__ (self):
         #Aqui se carga el instruction set table------------------------------------------
         path = os.getcwd()
-        self.ROM = open(path + "\\CPU\\Instruction.txt", "r")
+        self.ROM = open("Instruction.txt", "r")
         self.Rom_array = []
         for linea in self.ROM.readlines():
             self.Rom_array.append(linea)
@@ -15,7 +15,7 @@ class ROM:
 
 
         #Aqui se carga el Bios yml---------------------------------------------------
-        with open(path + "\\CPU\\Bios.yaml","r") as ymlfile:
+        with open("Bios.yaml","r") as ymlfile:
             self.cfg = yaml.load(ymlfile)
 
         for section in self.cfg:           

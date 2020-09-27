@@ -151,18 +151,97 @@ def JumpNeg(registro):
                 detener(len(ram.instruction))
     else:
         print("No hay salto de línea")
-def mostrarClock(clock, boolclock):
-    if(clock == True):
-        print(f"Clock: {clock}")
+def mostrarClock(clock, boolclock, rad):
+    if(rad == "bin"):
+        if(boolclock == True):
+            clock = bin(clock)
+            print(f"Clock: {clock}")
+    elif(rad == "Oct"):
+        if(boolclock == True):
+            clock = oct(clock)
+            print(f"Clock: {clock}")
+    elif(rad == "Dec"):
+        if(boolclock == True):
+            print(f"Clock: {clock}")
+    elif(rad == "Hex"):
+        if(boolclock == True):
+            clock = hex(clock)
+            print(f"Clock: {clock}")
+    else:
+        pass
+def mostrarRam(ramdata, boolram, rad):
+    if(rad == "bin"):
+        if(boolram == True):
+            fila = "["
+            parar = len(ramdata)-1
+            for i in range(len(ramdata)):
+                dtt = ramdata[i]
+                dtt = int(dtt)
+                dtt = bin(dtt)
+                fila += f"{str(dtt)}"
+                if(i != parar):
+                    fila += ", "
+            fila += "]"
+            print(fila)
+    elif(rad == "Oct"):
+        if(boolram == True):
+            fila = "["
+            parar = len(ramdata)-1
+            for i in range(len(ramdata)):
+                dtt = ramdata[i]
+                dtt = int(dtt)
+                dtt = oct(dtt)
+                fila += f"{str(dtt)}"
+                if(i != parar):
+                    fila += ", "
+            fila += "]"
+            print(fila)
+    elif(rad == "Dec"):
+         if(boolram == True):
+            print(f"Ram: {ramdata}")
+    elif(rad == "Hex"):
+         if(boolram == True):
+            fila = "["
+            parar = len(ramdata)-1
+            for i in range(len(ramdata)):
+                dtt = ramdata[i]
+                dtt = int(dtt)
+                dtt = bin(dtt)
+                fila += f"{str(dtt)}"
+                if(i != parar):
+                    fila += ", "
+            fila += "]"
+            print(fila)
 
-def mostrarRam(ramdata, boolram):
-    if(boolram == True):
-        print(f"Ram: {ramdata}")
-
-def mostrarRegistros(boolregistros):
+def mostrarRegistros(boolregistros, rad):
     if(boolregistros == True):
         global Registros
-        print(f"Registros:\n Registro0: {Registros[0].VRam}\n Registro1: {Registros[1].VRam}\n Registro2: {Registros[2].VRam}\n Registro3: {Registros[3].VRam}")
+        if(rad == "bin"):
+            r0 = bin(Registros[0].VRam)
+            r1 = bin(Registros[1].VRam)
+            r2 = bin(Registros[2].VRam)
+            r3 = bin(Registros[3].VRam)
+            r4 = bin(Registros[4].VRam)
+            r6 = bin(Registros[6].VRam)
+            print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
+        elif(rad == "Oct"):
+            r0 = oct(Registros[0].VRam)
+            r1 = oct(Registros[1].VRam)
+            r2 = oct(Registros[2].VRam)
+            r3 = oct(Registros[3].VRam)
+            r4 = oct(Registros[4].VRam)
+            r6 = oct(Registros[6].VRam)
+            print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
+        elif(rad == "Dec"):
+            print(f"Registros:\n Registro0: {(Registros[0].VRam)}\n Registro1: {(Registros[1].VRam)}\n Registro2: {(Registros[2].VRam)}\n Registro3: {(Registros[3].VRam)}\n Registro PC: {(Registros[4].VRam)}\n Registro IAR {(Registros[5].VRam)}\n Registro OR: {(Registros[6].VRam)}")        
+        elif(rad == "Hex"):
+            r0 = hex(Registros[0].VRam)
+            r1 = hex(Registros[1].VRam)
+            r2 = hex(Registros[2].VRam)
+            r3 = hex(Registros[3].VRam)
+            r4 = hex(Registros[4].VRam)
+            r6 = hex(Registros[6].VRam)
+            print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
 
 def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
     if(boolAluflags == True):
@@ -199,6 +278,8 @@ def main():
             vistaClock = valor
         elif(key == "ALU"):
             vistaAlu = valor
+        elif(key == "Radix"):
+            vistaRadix = valor
     
     #comentarear todo esto ----------------------------------------------------------------------------------------------    
     opcion = 0
@@ -216,9 +297,9 @@ def main():
     
     # si es debug clock = Clock(0)
     #print(ram.instruction)
-    mostrarRegistros(vistaRegistros)
-    mostrarRam(ram.data,vistaRam)
-    mostrarClock(clock.frecuencia,vistaClock)
+    mostrarRegistros(vistaRegistros, vistaRadix)
+    mostrarRam(ram.data,vistaRam, vistaRadix)
+    mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
     MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
     print("-----------PROGRAMA KEYSENSITIVE COMANDOS EN MAYUSCULAS---------")
     largo = len(ram.instruction)
@@ -235,10 +316,10 @@ def main():
             print("---------Fetch-----------")
             print(strin)
             Registros[4].VRam = i
-            Registros[5].VRam = strin
-            mostrarRegistros(vistaRegistros)
-            mostrarRam(ram.data,vistaRam)
-            mostrarClock(clock.frecuencia,vistaClock)
+            Registros[5].VRam = strin.rstrip("\n")
+            mostrarRegistros(vistaRegistros, vistaRadix)
+            mostrarRam(ram.data,vistaRam, vistaRadix)
+            mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
             MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
             clock.sleepScreen()
             data = ""
@@ -291,9 +372,9 @@ def main():
                     detener(len(ram.instruction))
             print("--------Execute------------")
             clock.sleepScreen()
-            mostrarRegistros(vistaRegistros)
-            mostrarRam(ram.data,vistaRam)
-            mostrarClock(clock.frecuencia,vistaClock)
+            mostrarRegistros(vistaRegistros, vistaRadix)
+            mostrarRam(ram.data,vistaRam, vistaRadix)
+            mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
             MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
             clock.sleepScreen()
             print("--------------------")
