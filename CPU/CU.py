@@ -4,6 +4,7 @@ from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
+from Memory import Memory
 class CU(IC):
     def CargarRegistroR0(self, insertar):
         if (type(insertar) == int):
@@ -156,7 +157,7 @@ class CU(IC):
     def mostrarRam(self, ramdata, boolram, rad):
         if(rad == "bin"):
             if(boolram == True):
-                fila = "["
+                fila = " ["
                 parar = len(ramdata)-1
                 for i in range(len(ramdata)):
                     dtt = ramdata[i]
@@ -166,10 +167,11 @@ class CU(IC):
                     if(i != parar):
                         fila += ", "
                 fila += "]"
+                print("Ram data: ")
                 print(fila)
         elif(rad == "Oct"):
             if(boolram == True):
-                fila = "["
+                fila = " ["
                 parar = len(ramdata)-1
                 for i in range(len(ramdata)):
                     dtt = ramdata[i]
@@ -179,13 +181,14 @@ class CU(IC):
                     if(i != parar):
                         fila += ", "
                 fila += "]"
+                print("Ram data: ")
                 print(fila)
         elif(rad == "Dec"):
             if(boolram == True):
                 print(f"Ram: {ramdata}")
         elif(rad == "Hex"):
             if(boolram == True):
-                fila = "["
+                fila = " ["
                 parar = len(ramdata)-1
                 for i in range(len(ramdata)):
                     dtt = ramdata[i]
@@ -195,6 +198,7 @@ class CU(IC):
                     if(i != parar):
                         fila += ", "
                 fila += "]"
+                print("Ram data: ")
                 print(fila)
 
     def mostrarRegistros(self, boolregistros, rad):
@@ -206,7 +210,7 @@ class CU(IC):
                 r3 = bin(self.Registros[3].VRam)
                 r4 = bin(self.Registros[4].VRam)
                 r6 = bin(self.Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR: {self.Registros[5].VRam}\n Registro OR: {r6}")
             elif(rad == "Oct"):
                 r0 = oct(self.Registros[0].VRam)
                 r1 = oct(self.Registros[1].VRam)
@@ -214,9 +218,9 @@ class CU(IC):
                 r3 = oct(self.Registros[3].VRam)
                 r4 = oct(self.Registros[4].VRam)
                 r6 = oct(self.Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR: {self.Registros[5].VRam}\n Registro OR: {r6}")
             elif(rad == "Dec"):
-                print(f"Registros:\n Registro0: {(self.Registros[0].VRam)}\n Registro1: {(self.Registros[1].VRam)}\n Registro2: {(self.Registros[2].VRam)}\n Registro3: {(self.Registros[3].VRam)}\n Registro PC: {(self.Registros[4].VRam)}\n Registro IAR {(self.Registros[5].VRam)}\n Registro OR: {(self.Registros[6].VRam)}")        
+                print(f"Registros:\n Registro0: {(self.Registros[0].VRam)}\n Registro1: {(self.Registros[1].VRam)}\n Registro2: {(self.Registros[2].VRam)}\n Registro3: {(self.Registros[3].VRam)}\n Registro PC: {(self.Registros[4].VRam)}\n Registro IAR: {(self.Registros[5].VRam)}\n Registro OR: {(self.Registros[6].VRam)}")        
             elif(rad == "Hex"):
                 r0 = hex(self.Registros[0].VRam)
                 r1 = hex(self.Registros[1].VRam)
@@ -224,7 +228,7 @@ class CU(IC):
                 r3 = hex(self.Registros[3].VRam)
                 r4 = hex(self.Registros[4].VRam)
                 r6 = hex(self.Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR: {self.Registros[5].VRam}\n Registro OR: {r6}")
 
     def MostrarAluflags(self, AluZero,AluOverflow, AluNegative,boolAluflags):
         if(boolAluflags == True):
@@ -381,6 +385,28 @@ class CU(IC):
         #self.alu = ALU()
         #self.ram = RAM()
     def runmain(self):
+        self.alu = ALU(self.man, self.build, self.pp)
+        self.alu.empezarALU()
+        self.ram = RAM()
+        #self.REGISTRO = Register(self.man, self.build, self.pp)
+        self.R0 = Register(self.man, self.build, self.pp)
+        self.R0.ingresarvalor(0)
+        self.R1 = Register(self.man, self.build, self.pp)
+        self.R1.ingresarvalor(0)
+        self.R2 = Register(self.man, self.build, self.pp)
+        self.R2.ingresarvalor(0)
+        self.R3 = Register(self.man, self.build, self.pp)
+        self.R3.ingresarvalor(0)
+        self.PC = Register(self.man, self.build, self.pp) #PC = IR
+        self.PC.ingresarvalor(0)
+        self.IAR = Register(self.man, self.build, self.pp)
+        self.IAR.ingresarvalor(0)
+        self.OR = Register(self.man, self.build, self.pp)
+        self.OR.ingresarvalor(0)
+        self.Registros = [self.R0, self.R1, self.R2, self.R3, self.PC, self.IAR, self.OR]
+        self.i = 0
+        self.Memorys = Memory(self.man, self.build, self.pp)
+        self.Memorys.Memoria()
         self.main()
         #rom = ROM()
         #ram = RAM()

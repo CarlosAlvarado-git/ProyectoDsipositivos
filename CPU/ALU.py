@@ -1,8 +1,7 @@
 #import Integratedcircuit
-class ALU:
-    def __init__ (self):
-        #self.Opcode = Opcode
-        #self.Input = Input
+from Integratedcircuit import IC
+class ALU(IC):
+    def empezarALU(self):
         self.Zero = False
         self.Z = 0
         self.Overflow = False
