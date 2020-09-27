@@ -1,12 +1,10 @@
-#import Integratedcircuit
-from Integratedcircuit import IC
+import Integratedcircuit
 from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
-import os
-class CU(IC):
+class CU(Integratedcircuit):
     R0 = Register(0)
     R1 = Register(0)
     R2 = Register(0)
@@ -386,6 +384,7 @@ class CU(IC):
                     Enter = input("press Enter to continue to the next instruction...")
                 #----------------------------------------------------------------------------------
     def __init__(self):
+        Integratedcircuit.__init__(self)
         main()
         #rom = ROM()
         #ram = RAM()
