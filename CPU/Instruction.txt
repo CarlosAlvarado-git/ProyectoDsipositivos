@@ -1,16 +1,16 @@
-0000-OUTPUT-OUT-#OR_(ram.data(data), data)!-4
-0001-LOAD_R0-LD_R0-#CargarRegistroR0(ram.valorData(data))!-4
-0010-LOAD_R1-LD_R1-#CargarRegistroR1(ram.valorData(data))!-4
-0011-AND-#alu.AND(data,Registros)!-2
-0100-ILD_R0-#CargarRegistroR0(data)!-4
-0101-STR_R0-STORE_R0-#ram.InsertarValor(R0.VRam, data)!-4
-0110-STR_R1-STORE_R1-#ram.InsertarValor(R1.VRam, data)!-4
-0111-OR-#alu.OR( data, Registros)!-2
-1000-ILD_R1-#CargarRegistroR1(data)!-4
-1001-ADD-#alu.Add(data, Registros)!-2
-1010-SUB-#alu.Subtraction(data, Registros)!-2
-1011-JMP-JUMP-#Jump(data)!-4
-1100-JMP_N-JUMP_NEG-#JumpNeg(data)!-4
-1101-LOAD_R2-#CargarRegistroR2(ram.valorData(data))!-
-1110-LOAD_R3-#CargarRegistroR3(ram.valorData(data))!-
-1111-HALT-HLT-#halt(len(ram.instruction))!-
+0000-OUTPUT-OUT-#self.OR_(ram.data(data), data)!-4
+0001-LOAD_R0-LD_R0-#self.CargarRegistroR0(self.ram.valorData(data))!-4
+0010-LOAD_R1-LD_R1-#self.CargarRegistroR1(self.ram.valorData(data))!-4
+0011-AND-#self.alu.AND(data,Registros)!-2
+0100-ILD_R0-#self.CargarRegistroR0(data)!-4
+0101-STR_R0-STORE_R0-#self.ram.InsertarValor(self.R0.VRam, data)!-4
+0110-STR_R1-STORE_R1-#self.ram.InsertarValor(self.R1.VRam, data)!-4
+0111-OR-#self.alu.OR(data, self.Registros)!-2
+1000-ILD_R1-#self.CargarRegistroR1(data)!-4
+1001-ADD-#self.alu.Add(data, self.Registros)!-2
+1010-SUB-#self.alu.Subtraction(data, self.Registros)!-2
+1011-JMP-JUMP-#self.Jump(data)!-4
+1100-JMP_N-JUMP_NEG-#self.JumpNeg(data)!-4
+1101-LOAD_R2-#self.CargarRegistroR2(self.ram.valorData(data))!-
+1110-LOAD_R3-#self.CargarRegistroR3(self.ram.valorData(data))!-
+1111-HALT-HLT-#self.halt(len(self.ram.instruction))!-

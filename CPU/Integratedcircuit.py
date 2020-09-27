@@ -1,4 +1,4 @@
-import CU
+from CU import CU
 class IC:
     def __init__(self, manufacturer, builddate, purpose):
         self.man = manufacturer

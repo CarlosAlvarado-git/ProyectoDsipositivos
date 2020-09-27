@@ -1,156 +1,141 @@
-import Integratedcircuit
+#import Integratedcircuit
 from ALU import ALU
 from RAM import RAM
 from Register import Register
 from ROM import ROM
 from Clock import Clock
-class CU(Integratedcircuit):
-    R0 = Register(0)
-    R1 = Register(0)
-    R2 = Register(0)
-    R3 = Register(0)
-    PC = Register(0) #PC = IR
-    IAR = Register("")
-    OR = Register(0)
-    Registros = [R0, R1, R2, R3, PC, IAR, OR]
-    i = 0
-    alu = ALU()
-    ram = RAM()
-    def CargarRegistroR0(insertar):
-        global Registros, ram
+class CU():
+    def CargarRegistroR0(self, insertar):
         if (type(insertar) == int):
             if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
-                Registros[0].VRam = insertar
+                self.Registros[0].VRam = insertar
                 print(f"Load_R0: valor: {insertar}")
             else:
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         else:
             if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 insertar = int(insertar)
-                Registros[0].VRam = insertar
+                self.Registros[0].VRam = insertar
                 print(f"Load_R0: valor: {insertar}")
             elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 #convertir de binario a decimal.
                 insertar = int(str(insertar), 2)
-                Registros[0].VRam = insertar
+                self.Registros[0].VRam = insertar
                 print(f"Load_R0: valor: {insertar}")
             else:
-                detener(len(ram.instruction))   
+                self.detener(len(self.ram.instruction))   
         
         #print(R0.VRam)
 
-    def CargarRegistroR1(insertar):
-        global Registros, ram
-        print(type(insertar))
+    def CargarRegistroR1(self, insertar):
+        #print(type(insertar))
         if (type(insertar) == int):
             if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
-                Registros[1].VRam = insertar
+                self.Registros[1].VRam = insertar
                 print(f"Load_R1: valor: {insertar}")
             else:
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         else:
             if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 insertar = int(insertar)
-                Registros[1].VRam = insertar
+                self.Registros[1].VRam = insertar
                 print(f"Load_R1: valor: {insertar}")
             elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 #convertir de binario a decimal.
                 insertar = int(str(insertar), 2)
-                Registros[1].VRam = insertar
+                self.Registros[1].VRam = insertar
                 print(f"Load_R1: valor: {insertar}")
             else:
-                detener(len(ram.instruction)) 
+                self.detener(len(self.ram.instruction)) 
 
-    def CargarRegistroR2(insertar):
+    def CargarRegistroR2(self, insertar):
         if (type(insertar) == int):
             if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
-                Registros[2].VRam = insertar
+                self.Registros[2].VRam = insertar
                 print(f"Load_R2: valor: {insertar}")
             else:
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         else:
             if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 insertar = int(insertar)
-                Registros[2].VRam = insertar
+                self.Registros[2].VRam = insertar
                 print(f"Load_R2: valor: {insertar}")
             elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 #convertir de binario a decimal.
                 insertar = int(str(insertar), 2)
-                Registros[2].VRam = insertar
+                self.Registros[2].VRam = insertar
                 print(f"Load_R2: valor: {insertar}")
             else:
-                detener(len(ram.instruction)) 
+                self.detener(len(self.ram.instruction)) 
 
-    def CargarRegistroR3(insertar):
+    def CargarRegistroR3(self, insertar):
         if (type(insertar) == int):
             if(insertar != -1 and (insertar >= 0 and insertar <= 15)):
-                Registros[3].VRam = insertar
+                self.Registros[3].VRam = insertar
                 print(f"Load_R3: valor: {insertar}")
             else:
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         else:
             if(len(insertar) <= 2 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 insertar = int(insertar)
-                Registros[3].VRam = insertar
+                self.Registros[3].VRam = insertar
                 print(f"Load_R3: valor: {insertar}")
             elif(len(insertar) == 4 and (int(insertar) >= 0 and int(insertar) <= 15)):
                 #convertir de binario a decimal.
                 insertar = int(str(insertar), 2)
-                Registros[3].VRam = insertar
+                self.Registros[3].VRam = insertar
                 print(f"Load_R3: valor: {insertar}")
             else:
-                detener(len(ram.instruction)) 
+                self.detener(len(self.ram.instruction)) 
 
-    def Jump(registro):
-        global i, ram
+    def Jump(self, registro):
         if (type(registro) == int and (registro >= 0 and registro <= 15)):
-            i = registro - 1 
-            print(f"Salto a la línea {i+1}")
+            self.i = registro - 1 
+            print(f"Salto a la línea {self.i+1}")
         elif(len(registro) <= 2):
             registro = int(registro)
             if(registro >= 0 and registro <= 15):
-                i = registro - 1
-                print(f"Salto a la línea {i+1}")
+                self.i = registro - 1
+                print(f"Salto a la línea {self.i+1}")
             else: 
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         elif(len(registro) == 4):
             #convertir de binario a decimal.
             registro = int(str(registro), 2)
             if(registro >= 0 and registro <= 15):
-                i = registro - 1
-                print(f"Salto a la línea {i+1}")
+                self.i = registro - 1
+                print(f"Salto a la línea {self.i+1}")
             else: 
-                detener(len(ram.instruction))
+                self.detener(len(self.ram.instruction))
         else:
-            detener(len(ram.instruction))
+            self.detener(len(self.ram.instruction))
 
-    def JumpNeg(registro):
-        global i,alu
-        if(alu.N > 0):
+    def JumpNeg(self, registro):
+        if(self.alu.N > 0):
             if (type(registro) == int and (registro >= 0 and registro <= 15)):
-                i = registro - 1
-                print(f"Salto a la línea {i+1} por Negative true")
+                self.i = registro - 1
+                print(f"Salto a la línea {self.i+1} por Negative true")
             else:
                 if(len(registro) <= 2):
                     registro = int(registro)
                     if(registro >= 0 and registro <= 15):
-                        i = registro - 1
-                        print(f"Salto a la línea {i+1} por Negative true")
+                        self.i = registro - 1
+                        print(f"Salto a la línea {self.i+1} por Negative true")
                     else: 
-                        detener(len(ram.instruction))
+                        self.detener(len(self.ram.instruction))
                 elif(len(registro) == 4):
                     #convertir de binario a decimal.
                     registro = int(str(registro), 2)
                     if(registro >= 0 and registro <= 15):
-                        i = registro - 1
-                        print(f"Salto a la línea {i+1} por Negative true")
+                        self.i = registro - 1
+                        print(f"Salto a la línea {self.i+1} por Negative true")
                     else: 
-                        detener(len(ram.instruction))
+                        self.detener(len(self.ram.instruction))
                 else:
-                    detener(len(ram.instruction))
+                    self.detener(len(self.ram.instruction))
         else:
             print("No hay salto de línea")
-    def mostrarClock(clock, boolclock, rad):
+    def mostrarClock(self, clock, boolclock, rad):
         if(rad == "bin"):
             if(boolclock == True):
                 clock = bin(clock)
@@ -168,7 +153,7 @@ class CU(Integratedcircuit):
                 print(f"Clock: {clock}")
         else:
             pass
-    def mostrarRam(ramdata, boolram, rad):
+    def mostrarRam(self, ramdata, boolram, rad):
         if(rad == "bin"):
             if(boolram == True):
                 fila = "["
@@ -212,57 +197,49 @@ class CU(Integratedcircuit):
                 fila += "]"
                 print(fila)
 
-    def mostrarRegistros(boolregistros, rad):
+    def mostrarRegistros(self, boolregistros, rad):
         if(boolregistros == True):
-            global Registros
             if(rad == "bin"):
-                r0 = bin(Registros[0].VRam)
-                r1 = bin(Registros[1].VRam)
-                r2 = bin(Registros[2].VRam)
-                r3 = bin(Registros[3].VRam)
-                r4 = bin(Registros[4].VRam)
-                r6 = bin(Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
+                r0 = bin(self.Registros[0].VRam)
+                r1 = bin(self.Registros[1].VRam)
+                r2 = bin(self.Registros[2].VRam)
+                r3 = bin(self.Registros[3].VRam)
+                r4 = bin(self.Registros[4].VRam)
+                r6 = bin(self.Registros[6].VRam)
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
             elif(rad == "Oct"):
-                r0 = oct(Registros[0].VRam)
-                r1 = oct(Registros[1].VRam)
-                r2 = oct(Registros[2].VRam)
-                r3 = oct(Registros[3].VRam)
-                r4 = oct(Registros[4].VRam)
-                r6 = oct(Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
+                r0 = oct(self.Registros[0].VRam)
+                r1 = oct(self.Registros[1].VRam)
+                r2 = oct(self.Registros[2].VRam)
+                r3 = oct(self.Registros[3].VRam)
+                r4 = oct(self.Registros[4].VRam)
+                r6 = oct(self.Registros[6].VRam)
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
             elif(rad == "Dec"):
-                print(f"Registros:\n Registro0: {(Registros[0].VRam)}\n Registro1: {(Registros[1].VRam)}\n Registro2: {(Registros[2].VRam)}\n Registro3: {(Registros[3].VRam)}\n Registro PC: {(Registros[4].VRam)}\n Registro IAR {(Registros[5].VRam)}\n Registro OR: {(Registros[6].VRam)}")        
+                print(f"Registros:\n Registro0: {(self.Registros[0].VRam)}\n Registro1: {(self.Registros[1].VRam)}\n Registro2: {(self.Registros[2].VRam)}\n Registro3: {(self.Registros[3].VRam)}\n Registro PC: {(self.Registros[4].VRam)}\n Registro IAR {(self.Registros[5].VRam)}\n Registro OR: {(self.Registros[6].VRam)}")        
             elif(rad == "Hex"):
-                r0 = hex(Registros[0].VRam)
-                r1 = hex(Registros[1].VRam)
-                r2 = hex(Registros[2].VRam)
-                r3 = hex(Registros[3].VRam)
-                r4 = hex(Registros[4].VRam)
-                r6 = hex(Registros[6].VRam)
-                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {Registros[5].VRam}\n Registro OR: {r6}")
+                r0 = hex(self.Registros[0].VRam)
+                r1 = hex(self.Registros[1].VRam)
+                r2 = hex(self.Registros[2].VRam)
+                r3 = hex(self.Registros[3].VRam)
+                r4 = hex(self.Registros[4].VRam)
+                r6 = hex(self.Registros[6].VRam)
+                print(f"Registros:\n Registro0: {r0}\n Registro1: {r1}\n Registro2: {r2}\n Registro3: {r3}\n Registro PC: {r4}\n Registro IAR {self.Registros[5].VRam}\n Registro OR: {r6}")
 
-    def MostrarAluflags(AluZero,AluOverflow, AluNegative,boolAluflags):
+    def MostrarAluflags(self, AluZero,AluOverflow, AluNegative,boolAluflags):
         if(boolAluflags == True):
             print(f"Zero: {AluZero}\nOverflow: {AluOverflow}\nNegative: {AluNegative}")
-    def halt(tamano):
-        global i
-        i = tamano
+    def halt(self, tamano):
+        self.i = tamano
         print("Program done")
-    def detener(tamano):
-        global i, ram
-        print(f"Error en la línea {i}: {ram.instruction[i]}")
-        i = tamano
-    def OR_(val, pos):
-        global Registros
-        Registros[6].VRam = int(val)
+    def detener(self,tamano):
+        print(f"Error en la línea {self.i}: {self.ram.instruction[self.i]}")
+        self.i = tamano
+    def OR_(self, val, pos):
+        self.Registros[6].VRam = int(val)
         print(f"OUTPUT: {pos}, valor: {val}")
-
-
-
-
-    def main():
-        global i,alu, ram, Registros
+    
+    def main(self):
         rom = ROM()
         #alu = ALU()
         #ram = RAM()
@@ -296,30 +273,30 @@ class CU(Integratedcircuit):
         
         # si es debug clock = Clock(0)
         #print(ram.instruction)
-        mostrarRegistros(vistaRegistros, vistaRadix)
-        mostrarRam(ram.data,vistaRam, vistaRadix)
-        mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
-        MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+        self.mostrarRegistros(vistaRegistros, vistaRadix)
+        self.mostrarRam(self.ram.data,vistaRam, vistaRadix)
+        self.mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
+        self.MostrarAluflags(self.alu.Zero, self.alu.Overflow, self.alu.Negative, vistaAlu)
         print("-----------PROGRAMA KEYSENSITIVE COMANDOS EN MAYUSCULAS---------")
-        largo = len(ram.instruction)
-        i = 0
+        largo = len(self.ram.instruction)
+        self.i = 0
         #print(i)
         #print(largo)
-        while (i < largo):
-            strin = str(ram.instruction[i])
+        while (self.i < largo):
+            strin = str(self.ram.instruction[self.i])
             if(strin.find(";")!= -1):
                 #print("Hola")
-                i = i + 1
+                self.i = self.i + 1
                 pass
             else:
                 print("---------Fetch-----------")
                 print(strin)
-                Registros[4].VRam = i
-                Registros[5].VRam = strin.rstrip("\n")
-                mostrarRegistros(vistaRegistros, vistaRadix)
-                mostrarRam(ram.data,vistaRam, vistaRadix)
-                mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
-                MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+                self.Registros[4].VRam = self.i
+                self.Registros[5].VRam = strin.rstrip("\n")
+                self.mostrarRegistros(vistaRegistros, vistaRadix)
+                self.mostrarRam(self.ram.data,vistaRam, vistaRadix)
+                self.mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
+                self.MostrarAluflags(self.alu.Zero, self.alu.Overflow, self.alu.Negative, vistaAlu)
                 clock.sleepScreen()
                 data = ""
                 buscar = "" 
@@ -359,33 +336,44 @@ class CU(Integratedcircuit):
                     elif(len(data) <= 2 and (int(data) >= 0 and int(data) <= 15)):
                         eval(instruction)
                     else:
-                        detener(len(ram.instruction))
+                        self.detener(len(self.ram.instruction))
                 elif((data[0:2] == "R0" or data[0:2] == "R1" or data[0:2] == "R2" or data[0:2] == "R3") and (data[2:] == "R0" or data[2:] == "R1" or data[2:] == "R2" or data[2:] == "R3")):
                     eval(instruction)
                 else:
                     #print(buscar)
                     #print(instruction)
-                    if(instruction == "halt(len(ram.instruction))"):
+                    if(instruction == "self.halt(len(self.ram.instruction))"):
                         eval(instruction)
                     else:
-                        detener(len(ram.instruction))
+                        self.detener(len(self.ram.instruction))
                 print("--------Execute------------")
                 clock.sleepScreen()
-                mostrarRegistros(vistaRegistros, vistaRadix)
-                mostrarRam(ram.data,vistaRam, vistaRadix)
-                mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
-                MostrarAluflags(alu.Zero, alu.Overflow, alu.Negative, vistaAlu)
+                self.mostrarRegistros(vistaRegistros, vistaRadix)
+                self.mostrarRam(self.ram.data,vistaRam, vistaRadix)
+                self.mostrarClock(clock.frecuencia,vistaClock, vistaRadix)
+                self.MostrarAluflags(self.alu.Zero, self.alu.Overflow, self.alu.Negative, vistaAlu)
                 clock.sleepScreen()
                 print("--------------------")
-                i = i + 1
-                alu.reset()
+                self.i = self.i + 1
+                self.alu.reset()
                 #comentarear esto------------------------------------------------------------------
                 if(opcion == 2):
                     Enter = input("press Enter to continue to the next instruction...")
                 #----------------------------------------------------------------------------------
     def __init__(self):
-        Integratedcircuit.__init__(self)
-        main()
+        #Integratedcircuit.__init__(self)
+        self.R0 = Register(0)
+        self.R1 = Register(0)
+        self.R2 = Register(0)
+        self.R3 = Register(0)
+        self.PC = Register(0) #PC = IR
+        self.IAR = Register("")
+        self.OR = Register(0)
+        self.Registros = [self.R0, self.R1, self.R2, self.R3, self.PC, self.IAR, self.OR]
+        self.i = 0
+        self.alu = ALU()
+        self.ram = RAM()
+        self.main()
         #rom = ROM()
         #ram = RAM()
         #alu = ALU()
