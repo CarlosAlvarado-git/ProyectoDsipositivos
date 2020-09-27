@@ -101,16 +101,30 @@ class ALU:
         self.N = self.N + 1
         Registros[y].VRam = (Registros[y].VRam)*(-1)
         
-    def Ocomplement(self):
-        pass
-    def Twcomplement(self):
-        pass
-    def AND(self):
-        pass
-    def OR(self):
-        pass
-    def shift(self):
-        pass
+    def Ocomplement(self,dato):
+        dato = bin(dato)[2:]
+        for i in dato:
+            if (dato[i]=="1"):
+                dato[i] = "0"
+            elif (dato[i]=="0"):
+                dato[i] = "1"
+        dato = int(str(dato),2)
+        return dato
+
+    def Twcomplement(self,dato):
+        dato = self.Ocomplement(dato) + 1
+        return dato
+        
+    def AND(self,data,Registros):
+        x = self.EncontrarReg(data)
+        y = self.EncontrarReg2(data)
+        Registros[y].VRam = Registros[x].VRam and Registros[y].VRam
+        
+    def OR(self, data, Registros):
+        x = self.EncontrarReg(data)
+        y = self.EncontrarReg2(data)
+        Registros[y].VRam = Registros[x].VRam or Registros[y].VRam
+
     def Simbols(self, R1, R0, simbolo):
         #self.Mayor = False
         #self.Menor = False
