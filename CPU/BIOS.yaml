@@ -8,7 +8,7 @@ visualization:
     Clock: false
     ALU: true
     # display mode for numbers
-    Radix: bin
+    Radix: Dec
 
 # RAM array
 RAM:
